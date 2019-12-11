@@ -7,6 +7,7 @@ import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
 //Pages
 import HomePage from './Pages/Home';
 import ProjectsPage from './Pages/Projects';
+import ContactPage from './Pages/Contact';
 //Components
 import Footer from './Components/footer';
 
@@ -64,7 +65,8 @@ const routing = (
 
         <Switch>
             <Route exact path="/" component={HomePage}/>
-            <Route path="/about" component={ProjectsPage}/>
+            <Route path="/projects" component={ProjectsPage}/>
+            <Route path="/contact" component={ContactPage}/>
         </Switch>
 
         <Footer></Footer>

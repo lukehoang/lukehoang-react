@@ -66,28 +66,13 @@ $(document).ready(function(){
     });
 
 
-    // Add active class 
-    var url = window.location.href;
-    
-    if(url.indexOf('contact') > 0){
-        $('.nav_contact').addClass('active');
-    }
-    else if(url.indexOf('portfolio') > 0){
-        $('.nav_portfolio').addClass('active');
-    }
-    else if(url.indexOf('bamboocopter') > 0){
-        $('.nav_gallery').addClass('active');
-    }
-    else if(url.indexOf('travel') > 0){
-        $('.nav_travel').addClass('active');
-    }
-    else if(url.indexOf('about') > 0){
-        $('.nav_about').addClass('active');
-    }
-    else {
-        $('.nav_home').addClass('active');
-    }
+    // Add active class onready
+    setActiveClass();
 
+    //Set active class on click
+    $('Link').click(function () {
+        setActiveClass();
+    });
 
 
     $(function() {
@@ -220,3 +205,25 @@ $(document).ready(function(){
     });
 
 });
+
+function setActiveClass (){
+    var url = window.location.href;
+    if(url.indexOf('contact') > 0){
+        $('.nav_contact').addClass('active');
+    }
+    else if(url.indexOf('projects') > 0){
+        $('.nav_portfolio').addClass('active');
+    }
+    else if(url.indexOf('bamboocopter') > 0){
+        $('.nav_gallery').addClass('active');
+    }
+    else if(url.indexOf('travel') > 0){
+        $('.nav_travel').addClass('active');
+    }
+    else if(url.indexOf('about') > 0){
+        $('.nav_about').addClass('active');
+    }
+    else {
+        $('.nav_home').addClass('active');
+    }
+}
