@@ -3,8 +3,12 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import * as serviceWorker from './serviceWorker';
 import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
-import App from './Pages/App';
-import AboutPage from './Pages/About';
+
+//Pages
+import HomePage from './Pages/Home';
+import ProjectsPage from './Pages/Projects';
+//Components
+import Footer from './Components/footer';
 
 
 const routing = (
@@ -18,8 +22,8 @@ const routing = (
                     <div className="nav">
                         <ul className="navbar">
                             <li><Link to="/" className="nav_home">Home</Link></li>
-                            <li><Link to="/about" className="nav_portfolio">Portfolio</Link></li>
-                            <li><Link to="contact.php" className="nav_contact">Contact</Link></li>
+                            <li><Link to="/projects" className="nav_portfolio">Projects</Link></li>
+                            <li><Link to="/contact" className="nav_contact">Contact</Link></li>
                         </ul>
                         <ul className="social">
                             <li><a href="https://www.facebook.com/bamboocopterfilm/" target="_blank"><i className="fa fa-facebook" aria-hidden="true"></i></a></li>
@@ -42,9 +46,9 @@ const routing = (
                 </div>
                 <div className="nav">
                     <ul>
-                        <li><a href="https://www.lukehoang.com" className="">Home</a></li>
-                        <li><a href="portfolio.php">Portfolio</a></li>
-                        <li><a href="contact.php">Contact</a></li>
+                        <li><Link to="/" className="nav_home">Home</Link></li>
+                        <li><Link to="/projects" className="nav_portfolio">Projects</Link></li>
+                        <li><Link to="/contact" className="nav_contact">Contact</Link></li>
                     </ul>
 
                     <ul className="social">
@@ -59,10 +63,13 @@ const routing = (
         </header>
 
         <Switch>
-            <Route exact path="/" component={App}/>
-            <Route path="/about" component={AboutPage}/>
+            <Route exact path="/" component={HomePage}/>
+            <Route path="/about" component={ProjectsPage}/>
         </Switch>
+
+        <Footer></Footer>
     </Router>
+
 );
 ReactDOM.render(routing, document.getElementById('root'));
 
