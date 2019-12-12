@@ -1,6 +1,49 @@
 import React, { Component } from 'react';
 
 export default class HomePage extends Component {
+    constructor(props){
+        super(props);
+        this.state = {
+            profile_opacity: true,
+            info_opacity: false,
+            skills_opacity: false,
+            exp_opacity: false
+        }
+    }
+
+    handleHoverIn(name){
+        if(name == 'bio'){
+            this.setState({
+                profile_opacity: false,
+                info_opacity: true,
+                skills_opacity: false,
+                exp_opacity: false
+            });
+        }else if(name == 'skills'){
+            this.setState({
+                profile_opacity: false,
+                info_opacity: false,
+                skills_opacity: true,
+                exp_opacity: false
+            });
+        }else if(name == 'exp'){
+            this.setState({
+                profile_opacity: false,
+                info_opacity: false,
+                skills_opacity: false,
+                exp_opacity: true
+            });
+        }
+    }
+    handleHoverOut(){
+        this.setState({
+            profile_opacity: true,
+            info_opacity: false,
+            skills_opacity: false,
+            exp_opacity: false
+        });
+    }
+
   render() {
     return(
       <div className="home-wrapper">
@@ -8,18 +51,18 @@ export default class HomePage extends Component {
               <div className="wrapper">
                   <div className="content flex">
                       <div className="header_nav keyframes_slidein">
-                          <h1> <a href="" className="bio h1_desktop">BIO</a></h1>
-                          <h1> <a href="" className="skills h1_desktop">SKILLS</a></h1>
-                          <h1> <a href="" className="experiences h1_desktop">EXPERIENCES</a></h1>
+                          <h1> <a href="" className="bio h1_desktop" onMouseEnter={() => this.handleHoverIn('bio')} onMouseLeave={() => this.handleHoverOut()}>BIO</a></h1>
+                          <h1> <a href="" className="skills h1_desktop" onMouseEnter={() => this.handleHoverIn('skills')} onMouseLeave={() => this.handleHoverOut()}>SKILLS</a></h1>
+                          <h1> <a href="" className="experiences h1_desktop" onMouseEnter={() => this.handleHoverIn('exp')} onMouseLeave={() => this.handleHoverOut()}>EXPERIENCES</a></h1>
                       </div>
                       <div className="profile_mobile">
                           <img src={"img/profile.jpg"}/>
                       </div>
                       <div className="box profile_box keyframes_fadein">
-                          <div className="profile">
+                          <div className="profile" style={{opacity: this.state.profile_opacity ? 1 : 0}}>
                           </div>
                       </div>
-                      <div className="box info" id="info">
+                      <div className="box info" id="info" style={{opacity: this.state.info_opacity ? 1 : 0}}>
                           <div>
                               <div className="title">
                                   <h3 className="headline">
@@ -36,7 +79,7 @@ export default class HomePage extends Component {
 
 
 
-                      <div className="box skills_box" id="skills">
+                      <div className="box skills_box" id="skills" style={{opacity: this.state.skills_opacity ? 1 : 0}}>
                           <div>
                               <div className="skill">
                                   <h3>Front-End</h3>
@@ -80,7 +123,7 @@ export default class HomePage extends Component {
 
 
 
-                      <div className="box experiences_box" id="experiences">
+                      <div className="box experiences_box" id="experiences" style={{opacity: this.state.exp_opacity ? 1 : 0}}>
                           <div className="timeline">
                               <div className="entry">
                                   <div className="title">

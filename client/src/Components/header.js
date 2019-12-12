@@ -6,7 +6,7 @@ import ProjectsPage from '../Pages/Projects';
 import ContactPage from '../Pages/Contact';
 
 export default class Header extends Component{
-    
+   
     render(){
         return (
             <Router>
