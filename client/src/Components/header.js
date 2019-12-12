@@ -1,7 +1,9 @@
 import React, {Component} from 'react';
 import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
 
-import AboutPage from '../Pages/About';
+import HomePage from '../Pages/Home';
+import ProjectsPage from '../Pages/Projects';
+import ContactPage from '../Pages/Contact';
 
 export default class Header extends Component{
     render(){
@@ -11,16 +13,13 @@ export default class Header extends Component{
                     <div className="navigation">
                         <div className="wrapper flex">
                             <div className="brand">
-                                <h1><Link to={"../Pages/about"}>Luke Hoang</Link></h1>
+                                <h1><Link to={"/"}>Luke Hoang</Link></h1>
                             </div>
-                            <Switch>
-                                <Route path="/about" component={AboutPage}/>
-                            </Switch>
                             <div className="nav">
                                 <ul className="navbar">
-                                    <li><a href="https://www.lukehoang.com" className="nav_home">Home</a></li>
-                                    <li><a href="portfolio.php" className="nav_portfolio">Portfolio</a></li>
-                                    <li><a href="contact.php" className="nav_contact">Contact</a></li>
+                                    <li><Link to="/" className="nav_home" >Home</Link></li>
+                                    <li><Link to="/projects" className="nav_portfolio" >Projects</Link></li>
+                                    <li><Link to="/contact" className="nav_contact" >Contact</Link></li>
                                 </ul>
                                 <ul className="social">
                                     <li><a href="https://www.facebook.com/bamboocopterfilm/" target="_blank"><i className="fa fa-facebook" aria-hidden="true"></i></a></li>
@@ -43,9 +42,9 @@ export default class Header extends Component{
                         </div>
                         <div className="nav">
                             <ul>
-                                <li><a href="https://www.lukehoang.com" className="">Home</a></li>
-                                <li><a href="portfolio.php">Portfolio</a></li>
-                                <li><a href="contact.php">Contact</a></li>
+                                <li><Link to="/" className="nav_home">Home</Link></li>
+                                <li><Link to="/projects" className="nav_portfolio">Projects</Link></li>
+                                <li><Link to="/contact" className="nav_contact">Contact</Link></li>
                             </ul>
 
                             <ul className="social">
@@ -58,6 +57,13 @@ export default class Header extends Component{
                         </div>
                     </div>
                 </header>
+
+                <Switch>
+                    <Route exact path="/" component={HomePage}/>
+                    <Route path="/projects" component={ProjectsPage}/>
+                    <Route path="/contact" component={ContactPage}/>
+                </Switch>
+                
             </Router>
         );
     }
