@@ -19,8 +19,8 @@ export default class Header extends Component{
                             <div className="nav">
                                 <ul className="navbar">
                                     <li><NavLink exact to="/" activeClassName="active">Home</NavLink></li>
-                                    <li><NavLink to="/projects" activeClassName="active">Projects</NavLink></li>
-                                    <li><NavLink to="/contact" activeClassName="active">Contact</NavLink></li>
+                                    <li><NavLink exact to="/projects" activeClassName="active">Projects</NavLink></li>
+                                    <li><NavLink exact to="/contact" activeClassName="active">Contact</NavLink></li>
                                 </ul>
                                 <ul className="social">
                                     <li><a href="https://www.facebook.com/bamboocopterfilm/" target="_blank"><i className="fa fa-facebook" aria-hidden="true"></i></a></li>
@@ -59,11 +59,11 @@ export default class Header extends Component{
                     </div>
                 </header>
 
-                <Switch>
+                
                     <Route exact path="/" component={HomePage}/>
                     <Route path="/projects" component={ProjectsPage}/>
                     <Route path="/contact" component={ContactPage}/>
-                </Switch>
+                
                 
             </Router>
         );
