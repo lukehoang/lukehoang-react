@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
+import logo_temple from '../img/logo_temple.png';
+import logo_oxford from '../img/logo_oxford.png';
 
 export default class HomePage extends Component {
-    
+
     constructor(props){
         super(props);
         this.state = {
@@ -57,7 +59,7 @@ export default class HomePage extends Component {
                           <h1> <a href="" className="experiences h1_desktop" onMouseEnter={() => this.handleHoverIn('exp')} onMouseLeave={() => this.handleHoverOut()}>EXPERIENCES</a></h1>
                       </div>
                       <div className="profile_mobile">
-                          <img src={"img/profile.jpg"}/>
+                          <img src={"../img/profile.jpg"}/>
                       </div>
                       <div className="box profile_box keyframes_fadein">
                           <div className="profile" style={{opacity: this.state.profile_opacity ? 1 : 0}}>
@@ -161,7 +163,7 @@ export default class HomePage extends Component {
                                   <div className="title">
                                       <h3>Fall 2018</h3>
                                       
-                                      <img src={"img/logo_temple.png"} />
+                                      <img src={logo_temple} />
                                   </div>
                                   <div className="body">
                                       <p>Bachelor of Science</p>
@@ -173,7 +175,7 @@ export default class HomePage extends Component {
                                   <div className="title">
                                       <h3>Spring 2019</h3>
                                       <p>Full-Stack Developer</p>
-                                      <img src={"img/logo_oxford.png"} />
+                                      <img src={logo_oxford} />
                                   </div>
                                   <div className="body">
                                       <p>Designing and developing full-stack applications across multiple platforms using modern industry-adopted languages and PHP frameworks</p>
