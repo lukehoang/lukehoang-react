@@ -1,11 +1,23 @@
 import React, {Component} from 'react';
-import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
+import { BrowserRouter as Router, Switch, Route, Link, NavLink } from 'react-router-dom';
 
 import HomePage from '../Pages/Home';
 import ProjectsPage from '../Pages/Projects';
 import ContactPage from '../Pages/Contact';
 
 export default class Header extends Component{
+
+    constructor(){
+        super()
+        this.state = {
+            activeClass: 'active'
+        }
+    }
+    
+    componentDidMount(){
+        alert('ee');
+    }
+    
     render(){
         return (
             <Router>
@@ -17,9 +29,9 @@ export default class Header extends Component{
                             </div>
                             <div className="nav">
                                 <ul className="navbar">
-                                    <li><Link to="/" className="nav_home" >Home</Link></li>
-                                    <li><Link to="/projects" className="nav_portfolio" >Projects</Link></li>
-                                    <li><Link to="/contact" className="nav_contact" >Contact</Link></li>
+                                    <li><NavLink exact to="/" activeClassName="actives">Home</NavLink></li>
+                                    <li><NavLink to="/projects" activeClassName="actives">Projects</NavLink></li>
+                                    <li><NavLink to="/contact" activeClassName="actives">Contact</NavLink></li>
                                 </ul>
                                 <ul className="social">
                                     <li><a href="https://www.facebook.com/bamboocopterfilm/" target="_blank"><i className="fa fa-facebook" aria-hidden="true"></i></a></li>

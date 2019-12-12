@@ -2,7 +2,6 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import * as serviceWorker from './serviceWorker';
-import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
 
 //CSS
 import './css/style.css';
@@ -19,7 +18,7 @@ import Footer from './Components/footer';
 
 
 const routing = (
-   
+
     <div>
         <Header></Header>
         <Footer></Footer> 

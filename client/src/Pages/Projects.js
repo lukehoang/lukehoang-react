@@ -14,12 +14,12 @@ export default class ProjectsPage extends Component {
                            
                         </div>
         
-                        <div className="box box_5" onclick="location.href='https://selfielikeapro.com/';" style={{cursor: "pointer"}}>
+                        <div className="box box_5" style={{cursor: "pointer"}}>
                         </div>
                      
-                        <div className="box box_2" onclick="location.href='/allpancakes.php';" style={{cursor: "pointer"}}>
+                        <div className="box box_2" style={{cursor: "pointer"}}>
                         </div>
-                        <div className="box box_3" onclick="location.href='https://infrashares.com';" style={{cursor: "pointer"}}>
+                        <div className="box box_3" style={{cursor: "pointer"}}>
                         </div>
                     </div>
                 </div>
