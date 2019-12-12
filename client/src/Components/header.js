@@ -6,17 +6,6 @@ import ProjectsPage from '../Pages/Projects';
 import ContactPage from '../Pages/Contact';
 
 export default class Header extends Component{
-
-    constructor(){
-        super()
-        this.state = {
-            activeClass: 'active'
-        }
-    }
-    
-    componentDidMount(){
-        alert('ee');
-    }
     
     render(){
         return (
@@ -29,9 +18,9 @@ export default class Header extends Component{
                             </div>
                             <div className="nav">
                                 <ul className="navbar">
-                                    <li><NavLink exact to="/" activeClassName="actives">Home</NavLink></li>
-                                    <li><NavLink to="/projects" activeClassName="actives">Projects</NavLink></li>
-                                    <li><NavLink to="/contact" activeClassName="actives">Contact</NavLink></li>
+                                    <li><NavLink exact to="/" activeClassName="active">Home</NavLink></li>
+                                    <li><NavLink to="/projects" activeClassName="active">Projects</NavLink></li>
+                                    <li><NavLink to="/contact" activeClassName="active">Contact</NavLink></li>
                                 </ul>
                                 <ul className="social">
                                     <li><a href="https://www.facebook.com/bamboocopterfilm/" target="_blank"><i className="fa fa-facebook" aria-hidden="true"></i></a></li>
