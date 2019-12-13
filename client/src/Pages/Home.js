@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import logo_temple from '../img/logo_temple.png';
 import logo_oxford from '../img/logo_oxford.png';
+import profile from '../img/profile.jpg';
 
 export default class HomePage extends Component {
 
@@ -15,21 +16,21 @@ export default class HomePage extends Component {
     }
 
     handleHoverIn(name){
-        if(name == 'bio'){
+        if(name === 'bio'){
             this.setState({
                 profile_opacity: false,
                 info_opacity: true,
                 skills_opacity: false,
                 exp_opacity: false
             });
-        }else if(name == 'skills'){
+        }else if(name === 'skills'){
             this.setState({
                 profile_opacity: false,
                 info_opacity: false,
                 skills_opacity: true,
                 exp_opacity: false
             });
-        }else if(name == 'exp'){
+        }else if(name === 'exp'){
             this.setState({
                 profile_opacity: false,
                 info_opacity: false,
@@ -59,7 +60,7 @@ export default class HomePage extends Component {
                           <h1> <a href="" className="experiences h1_desktop" onMouseEnter={() => this.handleHoverIn('exp')} onMouseLeave={() => this.handleHoverOut()}>EXPERIENCES</a></h1>
                       </div>
                       <div className="profile_mobile">
-                          <img src={"../img/profile.jpg"}/>
+                          <img src={profile}/>
                       </div>
                       <div className="box profile_box keyframes_fadein">
                           <div className="profile" style={{opacity: this.state.profile_opacity ? 1 : 0}}>

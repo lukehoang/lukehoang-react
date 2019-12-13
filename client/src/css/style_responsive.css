@@ -47,7 +47,7 @@
     .main .skills_box,
     .main .experiences_box {
         display: block;
-        opacity: 1;
+        opacity: 1 !important;
         margin-bottom: 1em;
     }
     .main .info,

@@ -12,19 +12,19 @@ export default class ProjectsPage extends Component {
     }
 
     handleHoverIn(name){
-        if(name == 'box_2'){
+        if(name === 'box_2'){
             this.setState({
                 box_2: true,
                 box_3: false,
                 box_5: false
             });
-        }else if(name == 'box_3'){
+        }else if(name === 'box_3'){
             this.setState({
                 box_2: false,
                 box_3: true,
                 box_5: false
             });
-        }else if(name == 'box_5'){
+        }else if(name === 'box_5'){
             this.setState({
                 box_2: false,
                 box_3: false,
