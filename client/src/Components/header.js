@@ -67,9 +67,9 @@ export default class Header extends Component{
                         </div>
                         <div className={`nav ${this.state.animated ? 'animated' : ''}`}>
                             <ul>
-                                <li><NavLink exact to="/"  activeClassName="active">Home</NavLink></li>
-                                <li><NavLink to="/projects" activeClassName="active">Projects</NavLink></li>
-                                <li><NavLink to="/contact" activeClassName="active">Contact</NavLink></li>
+                                <li><NavLink exact to="/"  activeClassName="active" onClick={()=>(this.toggleMenu('close'))}>Home</NavLink></li>
+                                <li><NavLink to="/projects" activeClassName="active" onClick={()=>(this.toggleMenu('close'))}>Projects</NavLink></li>
+                                <li><NavLink to="/contact" activeClassName="active" onClick={()=>(this.toggleMenu('close'))}>Contact</NavLink></li>
                             </ul>
 
                             <ul className="social">
