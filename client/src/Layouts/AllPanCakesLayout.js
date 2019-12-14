@@ -4,7 +4,7 @@ import {Route} from 'react-router-dom';
 const AllPanCakesLayoutRoute = ({component: Component, ...rest}) => {
     return (
         <Route {...rest} render={matchProps => (
-            <div className="layout">
+            <div>
               
                 <Component {...matchProps}/>
                
