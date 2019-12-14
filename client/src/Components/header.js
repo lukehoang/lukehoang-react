@@ -4,7 +4,6 @@ import { NavLink } from 'react-router-dom';
 
 //CSS
 import style from '../css/style.module.css';
-// import style_responsive from '../css/style_responsive.module.css';
 
 export default class Header extends Component{
     constructor(props){
@@ -34,7 +33,7 @@ export default class Header extends Component{
     render(){
         return (
             <header>
-                <div className={style.navigation}>
+                <div className={`${style.navigation}`}>
                     <div className={`${style.wrapper} ${style.flex}`}>
                         <div className={style.brand}>
                             <h1><NavLink exact to="/">Luke Hoang</NavLink></h1>
