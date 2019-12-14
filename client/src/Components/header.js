@@ -1,9 +1,10 @@
 import React, {Component} from 'react';
-import { BrowserRouter as Router, Route, NavLink } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 
-import HomePage from '../Pages/Home';
-import ProjectsPage from '../Pages/Projects';
-import ContactPage from '../Pages/Contact';
+
+//CSS
+import style from '../css/style.module.css';
+// import style_responsive from '../css/style_responsive.module.css';
 
 export default class Header extends Component{
     constructor(props){
@@ -32,47 +33,19 @@ export default class Header extends Component{
     }
     render(){
         return (
-            <Router>
-                <header>
-                    <div className="navigation">
-                        <div className="wrapper flex">
-                            <div className="brand">
-                                <h1><NavLink exact to="/">Luke Hoang</NavLink></h1>
-                            </div>
-                            <div className="nav">
-                                <ul className="navbar">
-                                    <li><NavLink exact to="/" activeClassName="active">Home</NavLink></li>
-                                    <li><NavLink exact to="/projects" activeClassName="active">Projects</NavLink></li>
-                                    <li><NavLink exact to="/contact" activeClassName="active">Contact</NavLink></li>
-                                </ul>
-                                <ul className="social">
-                                    <li><a href="https://www.facebook.com/bamboocopterfilm/" target="_blank" rel="noopener noreferrer"><i className="fa fa-facebook" aria-hidden="true"></i></a></li>
-                                    <li><a href="https://www.instagram.com/lukemhoang/" target="_blank" rel="noopener noreferrer"><i className="fa fa-instagram" aria-hidden="true"></i></a></li>
-                                    <li><a href="https://github.com/lukehoang" target="_blank" rel="noopener noreferrer"><i className="fa fa-github" aria-hidden="true"></i></a></li>
-                                    <li><a href="https://www.linkedin.com/in/lukehoang/" target="_blank" rel="noopener noreferrer"><i className="fa fa-linkedin-square" aria-hidden="true"></i>
-                                    </a></li>
-                                </ul>
-                            </div>
+            <header>
+                <div className={style.navigation}>
+                    <div className={`${style.wrapper} ${style.flex}`}>
+                        <div className={style.brand}>
+                            <h1><NavLink exact to="/">Luke Hoang</NavLink></h1>
                         </div>
-                    </div>
-
-                    <div className="navigation_mobile">
-                        <div className="wrapper flex">
-                            <div className="brand">
-                                <h1><NavLink exact to="/">Luke Hoang</NavLink></h1>
-                            </div>
-                            <div className="nav_icon">
-                                <i className={`fa fa-bars fa-2x ${!this.state.open ? 'hidden' : ''}`} aria-hidden="true" onClick={()=>(this.toggleMenu('open'))}></i><i className={`fa fa-times fa-2x ${!this.state.close ? 'hidden' : ''}`} aria-hidden="true" onClick={()=>(this.toggleMenu('close'))}></i>
-                            </div>
-                        </div>
-                        <div className={`nav ${this.state.animated ? 'animated' : ''}`}>
-                            <ul>
-                                <li><NavLink exact to="/"  activeClassName="active" onClick={()=>(this.toggleMenu('close'))}>Home</NavLink></li>
-                                <li><NavLink to="/projects" activeClassName="active" onClick={()=>(this.toggleMenu('close'))}>Projects</NavLink></li>
-                                <li><NavLink to="/contact" activeClassName="active" onClick={()=>(this.toggleMenu('close'))}>Contact</NavLink></li>
+                        <div className={style.nav}>
+                            <ul className={style.navbar}>
+                                <li><NavLink exact to="/" activeClassName={style.active}>Home</NavLink></li>
+                                <li><NavLink exact to="/projects" activeClassName={style.active}>Projects</NavLink></li>
+                                <li><NavLink exact to="/contact" activeClassName={style.active}>Contact</NavLink></li>
                             </ul>
-
-                            <ul className="social">
+                            <ul className={style.social}>
                                 <li><a href="https://www.facebook.com/bamboocopterfilm/" target="_blank" rel="noopener noreferrer"><i className="fa fa-facebook" aria-hidden="true"></i></a></li>
                                 <li><a href="https://www.instagram.com/lukemhoang/" target="_blank" rel="noopener noreferrer"><i className="fa fa-instagram" aria-hidden="true"></i></a></li>
                                 <li><a href="https://github.com/lukehoang" target="_blank" rel="noopener noreferrer"><i className="fa fa-github" aria-hidden="true"></i></a></li>
@@ -81,15 +54,35 @@ export default class Header extends Component{
                             </ul>
                         </div>
                     </div>
-                </header>
+                </div>
 
-                
-                    <Route exact path="/" component={HomePage}/>
-                    <Route path="/projects" component={ProjectsPage}/>
-                    <Route path="/contact" component={ContactPage}/>
-                
-                
-            </Router>
+                <div className={style.navigation_mobile}>
+                    <div className={`${style.wrapper} ${style.flex}`}>
+                        <div className={style.brand}>
+                            <h1><NavLink exact to="/">Luke Hoang</NavLink></h1>
+                        </div>
+                        <div className={style.nav_icon}>
+                            <i className={`fa fa-bars fa-2x ${!this.state.open ? style.hidden : ''}`} aria-hidden="true" onClick={()=>(this.toggleMenu('open'))}></i><i className={`fa fa-times fa-2x ${!this.state.close ? style.hidden : ''}`} aria-hidden="true" onClick={()=>(this.toggleMenu('close'))}></i>
+                        </div>
+                    </div>
+                    <div className={`${style.nav} ${this.state.animated ? style.animated : ''}`}>
+                        <ul>
+                            <li><NavLink exact to="/"  activeClassName={style.active} onClick={()=>(this.toggleMenu('close'))}>Home</NavLink></li>
+                            <li><NavLink to="/projects" activeClassName={style.active} onClick={()=>(this.toggleMenu('close'))}>Projects</NavLink></li>
+                            <li><NavLink to="/contact" activeClassName={style.active} onClick={()=>(this.toggleMenu('close'))}c>Contact</NavLink></li>
+                        </ul>
+
+                        <ul className={style.social}>
+                            <li><a href="https://www.facebook.com/bamboocopterfilm/" target="_blank" rel="noopener noreferrer"><i className="fa fa-facebook" aria-hidden="true"></i></a></li>
+                            <li><a href="https://www.instagram.com/lukemhoang/" target="_blank" rel="noopener noreferrer"><i className="fa fa-instagram" aria-hidden="true"></i></a></li>
+                            <li><a href="https://github.com/lukehoang" target="_blank" rel="noopener noreferrer"><i className="fa fa-github" aria-hidden="true"></i></a></li>
+                            <li><a href="https://www.linkedin.com/in/lukehoang/" target="_blank" rel="noopener noreferrer"><i className="fa fa-linkedin-square" aria-hidden="true"></i>
+                            </a></li>
+                        </ul>
+                    </div>
+                </div>
+            </header>
+
         );
     }
 }

@@ -4,6 +4,7 @@ export default class ContactPage extends Component {
     render(){
         return(
             <div className="main contact">
+
                 <div className="wrapper">
                     <div className="content flex">
                         <div className="header_nav">
@@ -38,6 +39,7 @@ export default class ContactPage extends Component {
                         </div>
                     </div>
                 </div>
+                
             </div>
         );
     }

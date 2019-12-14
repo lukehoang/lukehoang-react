@@ -141,7 +141,7 @@
         color: #0a1612;
     }
     .navigation_mobile .nav ul li a:hover {
-        border-bottom: 2px solid #0a1612;
+        border-bottom: none;
     }  
     .navigation_mobile .nav ul li a.active {
         color: #0a1612;
@@ -262,7 +262,7 @@
     .portfolio .box_3,
     .portfolio .box_4,
     .portfolio .box_5 {
-        opacity: 1;
+        opacity: 1 !important;
     }
 
 }
