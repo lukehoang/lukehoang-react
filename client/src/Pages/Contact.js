@@ -1,47 +1,110 @@
 import React, { Component } from 'react';
 import style from '../css/style.module.css';
+import axios from 'axios';
 
 export default class ContactPage extends Component {
+
+    constructor(props){
+        super(props);
+        this.state = {
+            modal: false,
+            name: '',
+            email: '',
+            message: ''
+        }
+    }
+    submitContactForm(e){
+        
+        e.preventDefault();
+
+        const name = document.getElementById('txt-cf-name').value;    
+        const email = document.getElementById('txt-cf-email').value;    
+        const message = document.getElementById('txt-cf-message').value;   
+        
+        axios({
+            method: "POST",
+            url: "https://api.lukemhoang.com/send",
+            data: {
+                name: name,
+                email: email,
+                message: message
+            }
+        }).then((response)=>{
+            if(response.data.status === 'success'){
+                this.setState({modal: true});
+                this.resetForm();
+            }else if(response.data.status === 'false'){
+                this.setState({modal: false});
+            }
+        })
+    }
+
+    resetForm(){
+        document.getElementById("contact_form").reset();
+        this.setState({name: '', email: '', message: ''});
+    }
+
+    onNameChange(e){
+        this.setState({name: e.target.value})
+    }
+
+    onEmailChange(e){
+        this.setState({email: e.target.value})
+    }
+
+    onMessageChange(e){
+        this.setState({message: e.target.value})
+    }
+
+    closeModal(){
+        this.setState({modal: false})
+    }
+
     render(){
         return(
-            <div className={`${style.main} ${style.contact}`}>
+            <div>
+                <div className={`${style.main} ${style.contact}`}>
 
-                <div className={style.wrapper}>
-                    <div className={`${style.content} ${style.flex}`}>
-                        <div className={style.header_nav}>
-                            <h1 className={style.headline}>
-                                Drop me a line of code!
-                            </h1>
-                            <div className={style.copy}>
-                                <p>Just kidding <i className="fa fa-smile-o fa-lg" aria-hidden="true"></i> Leave me a message, <br/> I try my best to response to all sort of questions.</p>
-                            </div>
+                    <div className={style.wrapper}>
+                        <div className={`${style.content} ${style.flex}`}>
+                            <div className={style.header_nav}>
+                                <h1 className={style.headline}>
+                                    Drop me a line of code!
+                                </h1>
+                                <div className={style.copy}>
+                                    <p>Just kidding <i className="fa fa-smile-o fa-lg" aria-hidden="true"></i> Leave me a message, <br/> I try my best to response to all sort of questions.</p>
+                                </div>
 
-                        </div>
-                        <div className={`${style.form} ${style.box}`}>
-                            <div className={style.card}>
-                                <form action="">
-                                    <div className={style.row}>
-                                        <input type="text" placeholder="Your Name"/>
-                                    </div>
-                                    <div className={style.row}>
-                                        <input type="email" placeholder="Your Email"/>
-                                    </div>
-                                    <div className={style.row}>
-                                        <input type="phone" placeholder="Your Number"/>
-                                    </div>
-                                    <div className={style.row}>
-                                        <textarea name="" id="" rows="5" placeholder="Comment..."></textarea>
-                                    </div>
-                                    <div className={style.row}>
-                                        <button className={`${style.btn} ${style.btn_send}`}>Send</button>
-                                    </div>
-                                </form>
+                            </div>
+                            <div className={`${style.form} ${style.box}`}>
+                                <div className={style.card}>
+                                    <form id="contact_form" onSubmit={this.submitContactForm.bind(this)} method="POST">
+                                        <div className={style.row}>
+                                            <input type="text" placeholder="Your Name" id="txt-cf-name" onChange={this.onNameChange.bind(this)} required/>
+                                        </div>
+                                        <div className={style.row}>
+                                            <input type="email" placeholder="Your Email" id="txt-cf-email" onChange={this.onEmailChange.bind(this)} required/>
+                                        </div>
+                                        <div className={style.row}>
+                                            <textarea rows="5" placeholder="Message"  id="txt-cf-message" onChange={this.onMessageChange.bind(this)} required></textarea>
+                                        </div>
+                                        <div className={style.row}>
+                                            <button type="submit" className={`${style.btn} ${style.btn_send}`}>Send</button>
+                                        </div>
+                                    </form>
+                                </div>
                             </div>
                         </div>
+                    </div>                
+                </div>
+
+                <div className={style.modal} style={{display: this.state.modal ? 'flex' : 'none'}}>
+                    <div className={style.modal_content}>
+                        <span className={style.modal_close} onClick={()=>this.closeModal()}><i class="fa fa-times" aria-hidden="true"></i></span>
+                        <p>Thank you for reaching out. I will get back to you soon.</p>
                     </div>
                 </div>
-                
-            </div>
+            </div> 
         );
     }
 }
