@@ -560,12 +560,13 @@ input, textarea {
     background-color: #fff;
     padding: 1.3em;
     border-radius: 3px;
+    font-size: 16px;
 }
 input::placeholder, textarea::placeholder {
     color: #0a1612;
     padding-left: 10px;
     font-family: 'Economica', sans-serif;
-    font-size: 14px;;
+    font-size: 16px;;
 }
 .btn_send {
     font-size: 1em;
