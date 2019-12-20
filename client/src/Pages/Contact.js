@@ -8,6 +8,7 @@ export default class ContactPage extends Component {
         super(props);
         this.state = {
             modal: false,
+            send: false,
             name: '',
             email: '',
             message: ''
@@ -16,7 +17,7 @@ export default class ContactPage extends Component {
     submitContactForm(e){
         
         e.preventDefault();
-
+        this.setState({modal: true});
         const name = document.getElementById('txt-cf-name').value;    
         const email = document.getElementById('txt-cf-email').value;    
         const message = document.getElementById('txt-cf-message').value;   
@@ -31,7 +32,7 @@ export default class ContactPage extends Component {
             }
         }).then((response)=>{
             if(response.data.status === 'success'){
-                this.setState({modal: true});
+                this.setState({send: true});
                 this.resetForm();
             }else if(response.data.status === 'false'){
                 this.setState({modal: false});
@@ -99,9 +100,14 @@ export default class ContactPage extends Component {
                 </div>
 
                 <div className={style.modal} style={{display: this.state.modal ? 'flex' : 'none'}}>
+                        <i class="fa fa-spinner fa-pulse fa-3x fa-fw" style={{color: '#fff', display: this.state.send ? 'none' : 'inline-block'}}></i>
+                </div>
+
+                <div className={style.modal} style={{display: (this.state.send && this.state.modal) ? 'flex' : 'none'}}>
                     <div className={style.modal_content}>
                         <span className={style.modal_close} onClick={()=>this.closeModal()}><i class="fa fa-times" aria-hidden="true"></i></span>
-                        <p>Thank you for reaching out. I will get back to you soon.</p>
+                        
+                        <p>{this.state.send ? 'Thank you for reaching out. I will get back to you soon. ': ''}</p>
                     </div>
                 </div>
             </div> 

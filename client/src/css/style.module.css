@@ -152,12 +152,19 @@ img {
     justify-content: center;
     align-items: center;
     background: rgba(16, 15, 15, 0.76);
+    transition: all .5s;
 }
 .modal_content {
     position: relative;
     padding: 2em 3em;
     border-radius: 2px;
     background: #fff;
+    min-height: 180px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 25px;
+    width: 100%;
 }
 .modal_close{
     position: absolute;
