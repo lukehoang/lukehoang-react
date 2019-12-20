@@ -42,10 +42,10 @@ export default class ProjectsPage extends Component {
                 <div className={style.wrapper}>
                     <div className={`${style.content} ${style.flex}`}>
                         <div className={`${style.header_nav} ${style.keyframes_slidein}`}>
-                            <h1> <a href="https://selfielikeapro.com/" className={`${style.h1_title_5} ${style.h1_desktop}`} onMouseEnter={() => this.handleHoverIn('box_5')} >SelfieLikeAPro</a></h1>
+                            <h1> <a href="https://selfielikeapro.com/" className={`${style.h1_title_5} ${style.h1_desktop}`} target="_blank" onMouseEnter={() => this.handleHoverIn('box_5')} >SelfieLikeAPro</a></h1>
                             
-                            <h1> <a href="/allpancakes" className={`${style.h1_title_2} ${style.h1_desktop}`} onMouseEnter={() => this.handleHoverIn('box_2')} >All Pancakes</a></h1>
-                            <h1> <a href="https://infrashares.com" className={`${style.h1_title_3} ${style.h1_desktop}`} onMouseEnter={() => this.handleHoverIn('box_3')} >InfraShares</a></h1>
+                            <h1> <a href="/allpancakes" className={`${style.h1_title_2} ${style.h1_desktop}`} target="_blank" onMouseEnter={() => this.handleHoverIn('box_2')} >All Pancakes</a></h1>
+                            <h1> <a href="https://infrashares.com" className={`${style.h1_title_3} ${style.h1_desktop}`} target="_blank" onMouseEnter={() => this.handleHoverIn('box_3')} >InfraShares</a></h1>
                            
                         </div>
         
