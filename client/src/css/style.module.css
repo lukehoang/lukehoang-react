@@ -165,6 +165,8 @@ img {
     justify-content: center;
     margin: 25px;
     width: 100%;
+    max-width: 500px;
+    text-align: center;
 }
 .modal_close{
     position: absolute;
