@@ -88,9 +88,10 @@ export default class HomePage extends Component {
 
                     <div className={`${style.box} ${style.skills_box}`} id={style.skills} style={{opacity: this.state.skills_opacity ? 1 : 0}}>
                         <div>
+                            <h3>This page was built using React.js</h3>
                             <div className={style.skill}>
                                 <h3>Front-End</h3>
-                                <p>HTML/CSS/Javascript/jQuery/React.Js/Bootstrap</p>
+                                <p>Javascript/jQuery/React.Js</p>
                                 <div className={`${style.bar} ${style.front_end}`}>
                                     <div className={style.black}></div>
                                     <div className={style.white}></div>
@@ -100,7 +101,7 @@ export default class HomePage extends Component {
 
                             <div className={style.skill}>
                                 <h3>Back-End</h3>
-                                <p>PHP/cakePHP/C#/.Net/Node/REST API</p>
+                                <p>PHP/C#/Node/REST API</p>
                                 <div className={`${style.bar} ${style.back_end}`}>
                                     <div className={style.black}></div>
                                     <div className={style.white}></div>
