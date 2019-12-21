@@ -387,11 +387,13 @@ GENERAL
 	/* Navigation Mobile */
 	.navigation_mobile {
 		position: fixed;
-		top: 0;
+		top: -100%;
 		width: 100%;
 		z-index: 9999;
 		background: #fff;
-		display: none;
+	}
+	.navigation_mobile.animated{
+		top: 0;
 	}
 	.navigation_mobile .wrapper {
 		height: 100vh;

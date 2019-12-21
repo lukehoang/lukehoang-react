@@ -13,6 +13,28 @@ import restaurant from'../img/allpancakes/restaurant.jpeg';
 import testimonial from'../img/allpancakes/testimonial.jpeg';
 
 export default class AllPanCakesPage extends Component{
+
+    constructor(props){
+        super(props);
+        this.state = {
+            open: true,
+            close: false,
+            animated: false
+        }
+    }
+
+    toggleMenu(name){
+        if(name === 'open'){
+            this.setState({
+                animated: true
+            });
+        }else if(name === 'close'){
+            this.setState({
+                animated: false
+            });
+        }
+    }
+
     render(){
         return (
             <div>
@@ -39,7 +61,7 @@ export default class AllPanCakesPage extends Component{
                                 </ul>
                             </div>
                             <div className={style.menu_icon}>
-                                <div className={style.icon}>
+                                <div className={style.icon} onClick={()=>this.toggleMenu('open')}>
                                     <i className="fa fa-bars" aria-hidden="true"></i>
                                 </div>
                             </div>
@@ -49,23 +71,23 @@ export default class AllPanCakesPage extends Component{
 
 
                 {/* <!-- Nav mobile --> */}
-                <section className={style.navigation_mobile}>
+                <section className={`${style.navigation_mobile} ${this.state.animated ? style.animated : ''}`}>
                     <div className={`${style.wrapper} ${style.flex}`}>
 
-                        <span className={style.btn_close}><i aria-hidden="true" className="fa fa-times fa-2x"></i></span>
+                        <span className={style.btn_close} onClick={()=>this.toggleMenu('close')}><i aria-hidden="true" className="fa fa-times fa-2x"></i></span>
                         <div className={style.nav}>
                             <div className={style.search_box}>
                                 <input className={style.search} placeholder="" type="text" />
                             </div>
                             <ul>
                                 <li>
-                                    <a className={style.nav_menu_item_link} href="#menu">Menu</a>
+                                    <a className={style.nav_menu_item_link} href="#menu" onClick={()=>this.toggleMenu('close')}>Menu</a>
                                 </li>
                                 <li>
-                                    <a className={style.nav_menu_item_link} href="#about">About</a>
+                                    <a className={style.nav_menu_item_link} href="#about" onClick={()=>this.toggleMenu('close')}>About</a>
                                 </li>
                                 <li>
-                                    <a className={style.nav_menu_item_link} href="#contact">Contact</a>
+                                    <a className={style.nav_menu_item_link} href="#contact" onClick={()=>this.toggleMenu('close')}>Contact</a>
                                 </li>
                             </ul>
                         </div>
