@@ -329,7 +329,7 @@ export default class AllPanCakesPage extends Component{
                 <footer>
                     <div className={style.copyright}>
                         <div className={`${style.container} ${style.flex_container}`}>
-                            <p>&copy;2019 &#9866; <a href="https://www.lukehoang.com">Lukehoang.com</a></p>
+                            <p>&copy;2019 &#9866; <a href="https://lukehoang.com">Lukehoang.com</a></p>
                             <ul className={`${style.social} ${style.flex_container}`}>
                                 <li><a href="https://www.facebook.com/bamboocopterfilm/" target="_blank"><i class="fa fa-facebook-official" aria-hidden="true"></i></a></li>
                                 <li><a href="https://www.instagram.com/lukemhoang/" target="_blank"><i class="fa fa-instagram" aria-hidden="true"></i></a></li>
