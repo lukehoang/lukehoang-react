@@ -3,10 +3,14 @@ import React, {Component} from 'react';
 //CSS
 import style from '../css/allpancakes_style.module.css';
 
+//images
 import hero_1 from '../img/allpancakes/hero-1.jpeg';
 import hero_2 from '../img/allpancakes/hero-2.jpeg';
+import hero_3 from '../img/allpancakes/hero-3.jpeg';
 import img_1 from'../img/allpancakes/1.jpeg';
 import img_3 from'../img/allpancakes/3.jpeg';
+import restaurant from'../img/allpancakes/restaurant.jpeg';
+import testimonial from'../img/allpancakes/testimonial.jpeg';
 
 export default class AllPanCakesPage extends Component{
     render(){
@@ -195,9 +199,9 @@ export default class AllPanCakesPage extends Component{
             {/* <!-- Common Hero block / auto align left--> */}
             <section className={style.common_hero}> 
                     <div className={style.wrapper}>
-                        <div className={style.hero_image} style={{backgroundImage: "url('img/allpancakes/hero-3.jpeg')"}}>
-                            <div className="style.overlay style.overlay_hero">
-                                <div className="style.container style.content">
+                        <div className={style.hero_image} style={{backgroundImage: `url(${hero_3})`, backgroundAttachment: "fixed"}}>
+                            <div className={`${style.overlay} ${style.overlay_hero}`}>
+                                <div className={`${style.container} ${style.content}`}>
                                     <div className={style.copy}>
                                         <div className={style.title}>Happy Hours</div>
                                     </div>
@@ -208,29 +212,29 @@ export default class AllPanCakesPage extends Component{
                 </section>
 
                 {/* <!-- Common left align block / auto align left--> */}
-                <section className="style.common_content style.block_3"  data-aos="fade-down" id="about">
+                <section className={`${style.common_content} ${style.block_3}`}  data-aos="fade-down" id="about">
                     <div className={style.wrapper}>
-                        <div className="style.container style.flex_container">
-                            <div className="style.text_align_center style.copy">
+                        <div className={`${style.container} ${style.flex_container}`}>
+                            <div className={`${style.text_align_center} ${style.copy}`}>
                                 <h1>About</h1>
                                 <p>Famous Pancakes is committed to provide our guests with delicious entrees, hand squeezed juices, and fast friendly service in a warm environment.</p>
                                 <p>We bring the tradition of freshly prepared breakfast and lunch of your choice. We use only the highest quality ingredients like fresh GRADE AA eggs, made from scratch hollandaise, extra thick cut hickory smoked bacon are just a few items we do fresh every day.</p>
                                 <button className={style.btn}>Call Now</button>
                             </div>
-                            <div className={style.img} style={{backgroundImage: "url('img/allpancakes/restaurant.jpeg')"}}></div>
+                            <div className={style.img} style={{backgroundImage: `url(${restaurant})`}}></div>
                         </div>
                     </div>
                 </section>
 
 
                 {/* <!-- Common Hero block / auto align left--> */}
-            <section className="style.common_hero style.testimonial"> 
+            <section className={`${style.common_hero} ${style.testimonial}`}> 
                     <div className={style.wrapper}>
-                        <div className={style.hero_image} style={{backgroundImage: "url('img/allpancakes/testimonial.jpeg')"}}>
-                            <div className="style.overlay style.overlay_hero">
-                                <div className="style.container style.content">
+                        <div className={style.hero_image} style={{backgroundImage: `url(${testimonial})`, backgroundAttachment: "fixed"}}>
+                            <div className={`${style.overlay} ${style.overlay_hero}`}>
+                                <div className={`${style.container} ${style.content}`}>
                                     <div className={style.copy}>
-                                        <h1>&#151; Testimonial &#151;</h1>
+                                        <h1>Testimonial</h1>
                                         <div className={style.title}>What Clients Say</div>
                                         <p>"Tall and fluffy. These pancakes are just right. Topped with strawberries and whipped cream, they are impossible to resist."</p>
                                     </div>
@@ -242,16 +246,16 @@ export default class AllPanCakesPage extends Component{
 
 
                 {/* <!-- Common left align block / auto align left--> */}
-                <section className="style.common_content style.block_4"  data-aos="fade-down" id="contact">
+                <section className={`${style.common_content} ${style.block_4}`}  data-aos="fade-down" id="contact">
                     <div className={style.wrapper}>
-                        <div className="style.container style.flex_container">
-                            <div className="style.text_align_center style.copy">
-                                <h3>&#151; Contact &#151;</h3>
+                        <div className={`${style.container} ${style.flex_container}`}>
+                            <div className={`${style.text_align_center} ${style.copy}`}>
+                                <h3>Contact</h3>
                                 <h1>Make a Reservation</h1>
                                 <p>Looking for an ideal venue? Look no further. Corporate dinners, special occasions, Chef’s Table, let us handle your needs. Reservations are available online.</p>
 
                                 <form action="">
-                                    <div className="style.flex_container">
+                                    <div className={style.flex_container}>
                                         <input type="text" placeholder="Name"/>
                                         <input type="text" placeholder="Email"/>
                                         <input type="text" placeholder="Phone"/>
@@ -262,18 +266,18 @@ export default class AllPanCakesPage extends Component{
                                 </form>
                                 <button className={style.btn}>Book Now</button>
                             </div>
-                            <div className={style.img} style={{backgroundImage: "url('img/allpancakes/restaurant.jpeg')"}}></div>
+                            <div className={style.img} style={{backgroundImage: `url(${restaurant})`}}></div>
                         </div>
                     </div>
                 </section>
 
 
                 {/* <!-- Common Hero block / auto align left--> */}
-            <section className="style.common_hero style.footer"> 
+            <section className={`${style.common_hero} ${style.footer}`}> 
                     <div className={style.wrapper}>
                         <div className={style.hero_image} style={{background: "#000"}}>
-                            <div className="style.overlay style.overlay_hero style.flex_container">
-                                <div className="style.container style.flex_container">
+                            <div className={`${style.overlay} ${style.overlay_hero} ${style.flex_container}`}>
+                                <div className={`${style.container} ${style.flex_container}`}>
                                     <div className={style.copy}>
                                         <div className={style.title}>All Pancakes</div>
                                         <p>For a truly memorable dining experience reserve in advance a table as soon as you can. Come and taste our remarkable food and wine.</p>
@@ -301,21 +305,21 @@ export default class AllPanCakesPage extends Component{
                     </div>
                 </section>
                 <footer>
-                    <div className="style.copyright">
-                        <div className="style.container style.flex_container">
+                    <div className={style.copyright}>
+                        <div className={`${style.container} ${style.flex_container}`}>
                             <p>&copy;2019 &#9866; <a href="https://www.lukehoang.com">Lukehoang.com</a></p>
-                            <ul className="style.social style.flex_container">
-                                <li><a href="https://www.facebook.com/bamboocopterfilm/" target="_blank"><i className="fab fa-facebook-f"></i></a></li>
-                                <li><a href="https://www.instagram.com/lukemhoang/" target="_blank"><i className="fab fa-instagram"></i></a></li>
-                                <li><a href="https://github.com/lukehoang" target="_blank"><i className="fab fa-github"></i></a></li>
-                                <li><a href="https://www.linkedin.com/in/lukehoang/" target="_blank"><i className="fab fa-linkedin"></i>
+                            <ul className={`${style.social} ${style.flex_container}`}>
+                                <li><a href="https://www.facebook.com/bamboocopterfilm/" target="_blank"><i class="fa fa-facebook-official" aria-hidden="true"></i></a></li>
+                                <li><a href="https://www.instagram.com/lukemhoang/" target="_blank"><i class="fa fa-instagram" aria-hidden="true"></i></a></li>
+                                <li><a href="https://github.com/lukehoang" target="_blank"><i class="fa fa-github" aria-hidden="true"></i></a></li>
+                                <li><a href="https://www.linkedin.com/in/lukehoang/" target="_blank"><i class="fa fa-linkedin-square" aria-hidden="true"></i>
                                 </a></li>
                             </ul>
                         </div>
                     </div>
                 </footer>
 
-                <a href="#top" className="style.back_to_top">
+                <a href="#top" className={style.back_to_top}>
                     <i className="fa fa-chevron-up" aria-hidden="true"></i>
                 </a>
             </div>
