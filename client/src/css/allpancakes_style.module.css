@@ -9,21 +9,20 @@ GENERAL
 		padding: 0;
 		box-sizing: border-box;
 		-webkit-box-sizing: border-box;
-		border: 0;
-		font-size: 16px;
-		line-height: 1.5rem;
-		letter-spacing: 0;
-		vertical-align: baseline;
+		transition: all .25s;
 	}
-	body, html, input {
+	.body_wrapper, .body_wrapper input {
         overflow-x:hidden;
 		font-family: "",sans-serif; /* TODO: update new fonts */
 		font-style: normal;
 		font-weight: 100;
 		color: #707070; /* TODO: update new color */
 		-moz-osx-font-smoothing: grayscale;
-        transition: all .25s;
-        background: #fff;
+		background: #fff;
+		font-size: 16px;
+		line-height: 1.5rem;
+		letter-spacing: 0;
+		vertical-align: baseline;
 	}
     .common_color {
         color: #49a6d4;
@@ -31,20 +30,20 @@ GENERAL
 		color: #f5f5f5;
 		color: #9FC4CE;
     }
-	a {
+	.body_wrapper a {
 		text-decoration: none;
 		color: inherit;
 		cursor: pointer;
 	}
 	
-    li {
+    .body_wrapper li {
 		list-style: none;
 		margin-left: 30px;
 	}
-	ul.list_style_initial li {
+	.body_wrapper ul.list_style_initial li {
 		list-style-type: initial;
 	}
-	img {
+	.body_wrapper img {
 		max-width: 100%;
 	}
 	.clearfix:after {

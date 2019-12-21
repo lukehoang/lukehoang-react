@@ -19,10 +19,11 @@ General
     margin: 0;
     padding: 0;
     box-sizing: border-box; 
+    -webkit-box-sizing: border-box;
     transition: all ease .25s;
 }
 
-body {
+.body_wrapper {
     font-family: 'Economica', sans-serif;
     color: #0a1612;
     font-size: 18px;
@@ -49,7 +50,7 @@ body {
     display: flex;   
     flex-wrap: wrap;
 }
-a {
+.body_wrapper a {
     color: #0a1612;
     text-decoration: none;
 }
@@ -58,14 +59,14 @@ a {
     font-weight: bold;
 }
 
-li {
+.body_wrapper li {
     list-style: none;
     margin-left: 30px;
 }
-ul.list_style_initial li {
+.body_wrapper ul.list_style_initial li {
     list-style-type: initial;
 }
-img {
+.body_wrapper img {
     max-width: 100%;
 }
 .clearfix:after {

@@ -1,36 +1,42 @@
 import React, {Component} from 'react';
 
 //CSS
-// import pancakeStyle from '../css/allpancakes_style.module.css';
+import style from '../css/allpancakes_style.module.css';
+
+import hero_1 from '../img/allpancakes/hero-1.jpeg';
+import hero_2 from '../img/allpancakes/hero-2.jpeg';
+import img_1 from'../img/allpancakes/1.jpeg';
+import img_3 from'../img/allpancakes/3.jpeg';
 
 export default class AllPanCakesPage extends Component{
     render(){
         return (
             <div>
-                <section class="navigation_desktop" id="top">
-                    <div class="wrapper">
-                        <div class="container flex">
-                            <div class="brand flex">
-                                <div class="logo">
+
+                <section className={style.navigation_desktop} id="top">
+                    <div className={style.wrapper}>
+                        <div className={`${style.container} ${style.flex}`}>
+                            <div className={`${style.brand} ${style.flex}`}>
+                                <div className={style.logo}>
                                     <h1>All Pancakes</h1>
                                 </div>
                             </div>
-                            <div class="nav">
-                                <ul class="flex">
+                            <div className={style.nav}>
+                                <ul className={style.flex}>
                                     <li>
-                                        <a class="nav-menu-item-link" href="#menu">Menu</a>
+                                        <a className={style.nav_menu_item_link} href="#menu">Menu</a>
                                     </li>
                                     <li>
-                                        <a class="nav-menu-item-link" href="#about">About</a>
+                                        <a className={style.nav_menu_item_link} href="#about">About</a>
                                     </li>
                                     <li>
-                                        <a class="nav-menu-item-link" href="#contact">Contact</a>
+                                        <a className={style.nav_menu_item_link} href="#contact">Contact</a>
                                     </li>
                                 </ul>
                             </div>
-                            <div class="menu_icon">
-                                <div class="icon">
-                                    <i class="fa fa-bars" aria-hidden="true"></i>
+                            <div className={style.menu_icon}>
+                                <div className={style.icon}>
+                                    <i className="fa fa-bars" aria-hidden="true"></i>
                                 </div>
                             </div>
                         </div>
@@ -39,23 +45,23 @@ export default class AllPanCakesPage extends Component{
 
 
                 {/* <!-- Nav mobile --> */}
-                <section class="navigation_mobile">
-                    <div class="wrapper flex">
+                <section className={style.navigation_mobile}>
+                    <div className={`${style.wrapper} ${style.flex}`}>
 
-                        <span class="btn_close"><i aria-hidden="true" class="fa fa-times fa-2x"></i></span>
-                        <div class="nav">
-                            <div class="search_box">
-                                <input class="search" placeholder="" type="text" />
+                        <span className={style.btn_close}><i aria-hidden="true" className="fa fa-times fa-2x"></i></span>
+                        <div className={style.nav}>
+                            <div className={style.search_box}>
+                                <input className={style.search} placeholder="" type="text" />
                             </div>
                             <ul>
                                 <li>
-                                    <a class="nav-menu-item-link" href="#menu">Menu</a>
+                                    <a className={style.nav_menu_item_link} href="#menu">Menu</a>
                                 </li>
                                 <li>
-                                    <a class="nav-menu-item-link" href="#about">About</a>
+                                    <a className={style.nav_menu_item_link} href="#about">About</a>
                                 </li>
                                 <li>
-                                    <a class="nav-menu-item-link" href="#contact">Contact</a>
+                                    <a className={style.nav_menu_item_link} href="#contact">Contact</a>
                                 </li>
                             </ul>
                         </div>
@@ -69,14 +75,14 @@ export default class AllPanCakesPage extends Component{
 
 
 
-                <section class="common_hero"> 
-                    <div class="wrapper">
-                        <div class="hero_image full_height" style={{backgroundImage: "url('../img/allpancakes/hero-1.jpeg')"}}>
-                            <div class="overlay overlay_hero">
-                                <div class="container content">
-                                    <div class="copy">
-                                        <div class="subtitle">All About</div>
-                                        <div class="title">Pancakes</div>
+                <section className={style.common_hero}> 
+                    <div className={style.wrapper}>
+                        <div className={`${style.hero_image} ${style.full_height}`} style={{backgroundImage: `url(${hero_1})`}}>
+                            <div className={`${style.overlay} ${style.overlay_hero}`}>
+                                <div className={`${style.container} ${style.content}`}>
+                                    <div className={style.copy}>
+                                        <div className={style.subtitle}>All About</div>
+                                        <div className={style.title}>Pancakes</div>
                                     </div>
                                 </div>
                             </div>
@@ -87,24 +93,24 @@ export default class AllPanCakesPage extends Component{
 
                 
                 {/* <!-- Common left align block / auto align left--> */}
-                <section class="common_content block_1"  data-aos="fade-down">
-                    <div class="wrapper">
-                        <div class="container">
+                <section className={`${style.common_content} ${style.block_1}`}  data-aos="fade-down">
+                    <div className={style.wrapper}>
+                        <div className={style.container}>
                             
-                            <div class="img_text flex_container">
+                            <div className={`${style.img_text} ${style.flex_container}`}>
                             
-                                <div class="img" style={{backgroundImage: "url('img/allpancakes/1.jpeg')"}}></div>
-                                <div class="text flex_container text_align_center">
+                                <div className={style.img} style={{backgroundImage: `url(${img_1})`}}></div>
+                                <div className={`${style.text} ${style.flex_container} ${style.text_align_center}`}>
                                     
                                     <div>
-                                        <h1>&#151; Welcome to AllPancakes &#151;</h1>
+                                        <h1>Welcome to AllPancakes</h1>
                                         <p>One of the latest additions to Philadelphia's pancake family, brings a modern (and healthier) twist to the traditional dish. Pancakes are made with spelt or oat flour, and you'll find a range of fresh, healthy juices to accompany. </p> 
                                         
-                                        <button class="btn">Call Now</button>
+                                        <button className={style.btn}>Call Now</button>
                                         
                                     </div>    
                                 </div>
-                                <div class="img" style={{backgroundImage: "url('img/allpancakes/3.jpeg')"}}></div>
+                                <div className={style.img} style={{backgroundImage: `url(${img_3})`}}></div>
 
                             </div>
                         </div>
@@ -117,13 +123,13 @@ export default class AllPanCakesPage extends Component{
 
 
                 {/* <!-- Common Hero block / auto align left--> */}
-                <section class="common_hero"> 
-                    <div class="wrapper">
-                        <div class="hero_image" style={{backgroundImage: "url('img/allpancakes/hero-2.jpeg')", backgroundAttachment: "fixed"}}>
-                            <div class="overlay overlay_hero">
-                                <div class="container content">
-                                    <div class="copy">
-                                        <div class="title">Our Specialties</div>
+                <section className={style.common_hero}> 
+                    <div className={style.wrapper}>
+                        <div className={style.hero_image} style={{backgroundImage: `url(${hero_2})`, backgroundAttachment: "fixed"}}>
+                            <div className={`${style.overlay} ${style.overlay_hero}`}>
+                                <div className={`${style.container} ${style.content}`}>
+                                    <div className={style.copy}>
+                                        <div className={style.title}>Our Specialties</div>
                                     </div>
                                 </div>
                             </div>
@@ -133,16 +139,16 @@ export default class AllPanCakesPage extends Component{
 
 
 
-                <section class="common_content block_2"  data-aos="fade-down" id="menu">
-                    <div class="wrapper">
-                        <div class="container flex_container">
+                <section className={`${style.common_content} ${style.block_2}`}  data-aos="fade-down" id="menu">
+                    <div className={style.wrapper}>
+                        <div className={`${style.container} ${style.flex_container}`}>
                             <div>
 
-                                <h1 class="text_align_center">&#151; Menu &#151;</h1>
-                                <h4 class="text_align_center">Explore texture, color and of course the ultimate tastes with our menu of the season. All the ingredients are fresh and carefully selected by our chefs. Enjoy an extraordinary dinning experience.</h4>
+                                <h1 className={style.text_align_center}>Menu</h1>
+                                <h4 className={style.text_align_center}>Explore texture, color and of course the ultimate tastes with our menu of the season. All the ingredients are fresh and carefully selected by our chefs. Enjoy an extraordinary dinning experience.</h4>
 
-                                <div class="flex_container menu">
-                                    <div class="col">
+                                <div className={`${style.flex_container} ${style.menu}`}>
+                                    <div className={style.col}>
                                         <div>
                                             <h3>Chocolate Pancake <span>$15.00</span></h3>
                                             <p>Fruit, pancakes, chocolate.</p>
@@ -161,7 +167,7 @@ export default class AllPanCakesPage extends Component{
                                         </div>
                                     </div>
 
-                                    <div class="col">
+                                    <div className={style.col}>
                                         <div>
                                             <h3>Blueberry Pancake<span>$12.00</span></h3>
                                             <p>Blueberry, raw honey, pancakes.</p> 
@@ -187,13 +193,13 @@ export default class AllPanCakesPage extends Component{
 
 
             {/* <!-- Common Hero block / auto align left--> */}
-            <section class="common_hero"> 
-                    <div class="wrapper">
-                        <div class="hero_image" style={{backgroundImage: "url('img/allpancakes/hero-3.jpeg')"}}>
-                            <div class="overlay overlay_hero">
-                                <div class="container content">
-                                    <div class="copy">
-                                        <div class="title">Happy Hours</div>
+            <section className={style.common_hero}> 
+                    <div className={style.wrapper}>
+                        <div className={style.hero_image} style={{backgroundImage: "url('img/allpancakes/hero-3.jpeg')"}}>
+                            <div className="style.overlay style.overlay_hero">
+                                <div className="style.container style.content">
+                                    <div className={style.copy}>
+                                        <div className={style.title}>Happy Hours</div>
                                     </div>
                                 </div>
                             </div>
@@ -202,30 +208,30 @@ export default class AllPanCakesPage extends Component{
                 </section>
 
                 {/* <!-- Common left align block / auto align left--> */}
-                <section class="common_content block_3"  data-aos="fade-down" id="about">
-                    <div class="wrapper">
-                        <div class="container flex_container">
-                            <div class="text_align_center copy">
+                <section className="style.common_content style.block_3"  data-aos="fade-down" id="about">
+                    <div className={style.wrapper}>
+                        <div className="style.container style.flex_container">
+                            <div className="style.text_align_center style.copy">
                                 <h1>About</h1>
                                 <p>Famous Pancakes is committed to provide our guests with delicious entrees, hand squeezed juices, and fast friendly service in a warm environment.</p>
                                 <p>We bring the tradition of freshly prepared breakfast and lunch of your choice. We use only the highest quality ingredients like fresh GRADE AA eggs, made from scratch hollandaise, extra thick cut hickory smoked bacon are just a few items we do fresh every day.</p>
-                                <button class="btn">Call Now</button>
+                                <button className={style.btn}>Call Now</button>
                             </div>
-                            <div class="img" style={{backgroundImage: "url('img/allpancakes/restaurant.jpeg')"}}></div>
+                            <div className={style.img} style={{backgroundImage: "url('img/allpancakes/restaurant.jpeg')"}}></div>
                         </div>
                     </div>
                 </section>
 
 
                 {/* <!-- Common Hero block / auto align left--> */}
-            <section class="common_hero testimonial"> 
-                    <div class="wrapper">
-                        <div class="hero_image" style={{backgroundImage: "url('img/allpancakes/testimonial.jpeg')"}}>
-                            <div class="overlay overlay_hero">
-                                <div class="container content">
-                                    <div class="copy">
+            <section className="style.common_hero style.testimonial"> 
+                    <div className={style.wrapper}>
+                        <div className={style.hero_image} style={{backgroundImage: "url('img/allpancakes/testimonial.jpeg')"}}>
+                            <div className="style.overlay style.overlay_hero">
+                                <div className="style.container style.content">
+                                    <div className={style.copy}>
                                         <h1>&#151; Testimonial &#151;</h1>
-                                        <div class="title">What Clients Say</div>
+                                        <div className={style.title}>What Clients Say</div>
                                         <p>"Tall and fluffy. These pancakes are just right. Topped with strawberries and whipped cream, they are impossible to resist."</p>
                                     </div>
                                 </div>
@@ -236,16 +242,16 @@ export default class AllPanCakesPage extends Component{
 
 
                 {/* <!-- Common left align block / auto align left--> */}
-                <section class="common_content block_4"  data-aos="fade-down" id="contact">
-                    <div class="wrapper">
-                        <div class="container flex_container">
-                            <div class="text_align_center copy">
+                <section className="style.common_content style.block_4"  data-aos="fade-down" id="contact">
+                    <div className={style.wrapper}>
+                        <div className="style.container style.flex_container">
+                            <div className="style.text_align_center style.copy">
                                 <h3>&#151; Contact &#151;</h3>
                                 <h1>Make a Reservation</h1>
                                 <p>Looking for an ideal venue? Look no further. Corporate dinners, special occasions, Chef’s Table, let us handle your needs. Reservations are available online.</p>
 
                                 <form action="">
-                                    <div class="flex_container">
+                                    <div className="style.flex_container">
                                         <input type="text" placeholder="Name"/>
                                         <input type="text" placeholder="Email"/>
                                         <input type="text" placeholder="Phone"/>
@@ -254,25 +260,25 @@ export default class AllPanCakesPage extends Component{
                                         <textarea name="" id="" cols="30" rows="5" placeholder="Your Message"></textarea>
                                     </div>
                                 </form>
-                                <button class="btn">Book Now</button>
+                                <button className={style.btn}>Book Now</button>
                             </div>
-                            <div class="img" style={{backgroundImage: "url('img/allpancakes/restaurant.jpeg')"}}></div>
+                            <div className={style.img} style={{backgroundImage: "url('img/allpancakes/restaurant.jpeg')"}}></div>
                         </div>
                     </div>
                 </section>
 
 
                 {/* <!-- Common Hero block / auto align left--> */}
-            <section class="common_hero footer"> 
-                    <div class="wrapper">
-                        <div class="hero_image" style={{background: "#000"}}>
-                            <div class="overlay overlay_hero flex_container">
-                                <div class="container flex_container">
-                                    <div class="copy">
-                                        <div class="title">All Pancakes</div>
+            <section className="style.common_hero style.footer"> 
+                    <div className={style.wrapper}>
+                        <div className={style.hero_image} style={{background: "#000"}}>
+                            <div className="style.overlay style.overlay_hero style.flex_container">
+                                <div className="style.container style.flex_container">
+                                    <div className={style.copy}>
+                                        <div className={style.title}>All Pancakes</div>
                                         <p>For a truly memorable dining experience reserve in advance a table as soon as you can. Come and taste our remarkable food and wine.</p>
                                     </div>
-                                    <div class="copy">
+                                    <div className={style.copy}>
                                         <h2>Contact Us</h2>
                                         <p>88 Ave</p>
                                         <p>Philadelphia, PA 11111</p>
@@ -280,7 +286,7 @@ export default class AllPanCakesPage extends Component{
                                         <p>215-222-2222</p>
                                         <p>info@allpancakes.com</p>
                                     </div>
-                                    <div class="copy">
+                                    <div className={style.copy}>
                                         <h2>Hours</h2>
                                         <p>Monday - Sunday</p>
                                         <p>8AM - 8PM</p>
@@ -295,22 +301,22 @@ export default class AllPanCakesPage extends Component{
                     </div>
                 </section>
                 <footer>
-                    <div class="copyright">
-                        <div class="container flex_container">
+                    <div className="style.copyright">
+                        <div className="style.container style.flex_container">
                             <p>&copy;2019 &#9866; <a href="https://www.lukehoang.com">Lukehoang.com</a></p>
-                            <ul class="social flex_container">
-                                <li><a href="https://www.facebook.com/bamboocopterfilm/" target="_blank"><i class="fab fa-facebook-f"></i></a></li>
-                                <li><a href="https://www.instagram.com/lukemhoang/" target="_blank"><i class="fab fa-instagram"></i></a></li>
-                                <li><a href="https://github.com/lukehoang" target="_blank"><i class="fab fa-github"></i></a></li>
-                                <li><a href="https://www.linkedin.com/in/lukehoang/" target="_blank"><i class="fab fa-linkedin"></i>
+                            <ul className="style.social style.flex_container">
+                                <li><a href="https://www.facebook.com/bamboocopterfilm/" target="_blank"><i className="fab fa-facebook-f"></i></a></li>
+                                <li><a href="https://www.instagram.com/lukemhoang/" target="_blank"><i className="fab fa-instagram"></i></a></li>
+                                <li><a href="https://github.com/lukehoang" target="_blank"><i className="fab fa-github"></i></a></li>
+                                <li><a href="https://www.linkedin.com/in/lukehoang/" target="_blank"><i className="fab fa-linkedin"></i>
                                 </a></li>
                             </ul>
                         </div>
                     </div>
                 </footer>
 
-                <a href="#top" class="back_to_top">
-                    <i class="fa fa-chevron-up" aria-hidden="true"></i>
+                <a href="#top" className="style.back_to_top">
+                    <i className="fa fa-chevron-up" aria-hidden="true"></i>
                 </a>
             </div>
         );
