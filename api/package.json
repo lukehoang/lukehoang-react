@@ -14,8 +14,13 @@
     "googleapis": "^46.0.0",
     "http-errors": "~1.6.3",
     "jade": "~1.11.0",
+    "mongoose": "^5.8.3",
     "morgan": "~1.9.1",
     "multipart": "^0.1.5",
     "nodemailer": "^6.4.2"
+  },
+  "devDependencies": {
+    "dotenv": "^8.2.0",
+    "nodemon": "^2.0.2"
   }
 }
