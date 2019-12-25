@@ -1,1 +1,27 @@
 GET http://localhost:5000/subscribers
+
+###
+
+GET http://localhost:5000/subscribers/5e0247c41135e43d6c48b0f8
+
+###
+
+POST http://localhost:5000/subscribers
+Content-TYPE: application/json
+
+{
+    "name": "Luke mung",
+    "channel": "lukehoang"
+}
+
+###
+
+DELETE  http://localhost:5000/subscribers/5e0247c41135e43d6c48b0f8
+
+###
+
+PATCH http://localhost:5000/subscribers/5e0250359f3dbf41e8ff47d5
+Content-TYPE: application/json
+{
+    "name": "mung"
+}
