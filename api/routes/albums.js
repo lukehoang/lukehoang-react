@@ -26,9 +26,15 @@ router.post('/', async (req, res) => {
 
     try {
         const newAlbum = await album.save();
-        res.status(200).json(newAlbum);
+        // res.status(200).json(newAlbum);
+        res.json({
+            status: 'success'
+        })
     } catch (err) {
-        res.status(500).json({message: err.message});
+        // res.status(500).json({message: err.message});
+        res.json({
+            status: 'false'
+        })
     }
 });
 
