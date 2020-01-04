@@ -28,8 +28,8 @@ app.use(function(req, res, next){
 app.get('/', (req, res) => res.json({"message": "this page is returning a json message. you know"}));
 
 //Test api
-const subscribersRouter = require('./routes/subscribers');
-app.use('/subscribers', subscribersRouter);
+const albumsRouter = require('./routes/albums');
+app.use('/albums', albumsRouter);
 
 //Send email API
 

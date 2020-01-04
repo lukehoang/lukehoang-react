@@ -1,15 +1,15 @@
 const mongoose = require('mongoose');
 
-const subscriberSchema = new mongoose.Schema({
+const albumSchema = new mongoose.Schema({
     name: {
         type: String,
         required: true
     },
-    channel: {
+    location: {
         type: String,
         required: true
     },
-    subDate: {
+    createdDate: {
         type: Date,
         required: true,
         default: Date.now
@@ -18,4 +18,4 @@ const subscriberSchema = new mongoose.Schema({
 });
 
 //export subscribers data to schema
-module.exports = mongoose.model('Subscriber', subscriberSchema);
+module.exports = mongoose.model('Album', albumSchema);

@@ -1,26 +1,26 @@
-GET http://localhost:5000/subscribers
+GET http://localhost:5000/albums
 
 ###
 
-GET http://localhost:5000/subscribers/5e0250359f3dbf41e8ff47d5
+GET http://localhost:5000/albums/5e0250359f3dbf41e8ff47d5
 
 ###
 
-POST http://localhost:5000/subscribers
+POST http://localhost:5000/albums
 Content-TYPE: application/json
 
 {
     "name": "Luke mung",
-    "channel": "lukehoang"
+    "location": "philadelphia"
 }
 
 ###
 
-DELETE  http://localhost:5000/subscribers/5e0247c41135e43d6c48b0f8
+DELETE  http://localhost:5000/albums/5e1017ef1db1a26897dc6250
 
 ###
 
-PATCH http://localhost:5000/subscribers/5e0250359f3dbf41e8ff47d5
+PATCH http://localhost:5000/albums/5e0250359f3dbf41e8ff47d5
 Content-Type: application/json
 
 {
