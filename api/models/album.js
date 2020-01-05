@@ -9,6 +9,9 @@ const albumSchema = new mongoose.Schema({
         type: String,
         required: true
     },
+    image:{
+        type: String
+    },
     createdDate: {
         type: Date,
         required: true,

@@ -2,6 +2,9 @@ const express = require('express');
 const router = express.Router();
 const Album = require('../models/album');
 
+const multer = require('multer');
+const uuidv4 = require('uuid/v4');
+
 //get all albums
 router.get('/', async (req, res) => {
     try {
@@ -79,5 +82,52 @@ async function getAlbum(req, res, next){
     res.album = album;
     next();
 }
+
+
+
+// var storage = multer.diskStorage({
+//     destination: function (req, file, cb) {
+//       cb(null, './public/')
+//     },
+//     filename: (req, file, cb) => {
+//         const fileName = file.originalname.toLowerCase().split(' ').join('-');
+//         cb(null, uuidv4() + '-' + fileName)
+//     }
+//   })
+   
+//   var upload = multer({
+//         storage: storage,
+//         fileFilter: (req, file, cb) => {
+//             if (file.mimetype == "image/png" || file.mimetype == "image/jpg" || file.mimetype == "image/jpeg") {
+//                 cb(null, true);
+//             } else {
+//                 cb(null, false);
+//                 return cb(new Error('Only .png, .jpg and .jpeg format allowed!'));
+//             }
+//         }
+//     });
+
+// router.post('/upload', upload.single('image'), (req, res, next) => {
+//     const url = req.protocol + '://' + req.get('host')
+//     const user = new User({
+//         _id: new mongoose.Types.ObjectId(),
+//         name: req.body.name,
+//         image: url + '/public/' + req.file.filename
+//     });
+//     user.save().then(result => {
+//         res.status(201).json({
+//             message: "User registered successfully!",
+//             userCreated: {
+//                 _id: result._id,
+//                 profileImg: result.profileImg
+//             }
+//         })
+//     }).catch(err => {
+//         console.log(err),
+//             res.status(500).json({
+//                 error: err
+//             });
+//     })
+// })
 
 module.exports = router;
