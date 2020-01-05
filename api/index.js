@@ -4,6 +4,8 @@ const app = express();
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const nodemailer = require('nodemailer');
+const cors = require('cors');
+const multer = require('multer');
 const port = process.env.PORT || 5000;
 
 //DB config
@@ -80,6 +82,30 @@ app.post('/send', (req, res) => {
         }
     })
 });
+
+app.use(cors());
+
+var storage = multer.diskStorage({
+    destination: function (req, file, cb) {
+      cb(null, 'uploads')
+    },
+    filename: function (req, file, cb) {
+      cb(null, file.fieldname + '-' + Date.now())
+    }
+  })
+   
+  var upload = multer({ storage: storage })
+
+app.post('/upload', upload.single('myFile'), (req, res, next) => {
+  const file = req.file
+  if (!file) {
+    const error = new Error('Please upload a file')
+    error.httpStatusCode = 400
+    return next(error)
+  }
+    res.send(file)
+  
+})
 
 app.listen(port, () => console.log('server is running on port '+port));
 
