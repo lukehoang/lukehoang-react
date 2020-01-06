@@ -85,12 +85,15 @@ app.post('/send', (req, res) => {
 
 app.use(cors());
 
+const fs = require('fs');
+const path = require('path');
+
 var storage = multer.diskStorage({
     destination: function (req, file, cb) {
-    cb(null, 'public')
+    cb(null, 'public/images/upload/')
   },
   filename: function (req, file, cb) {
-    cb(null, Date.now() + '-' +file.originalname )
+    cb(null, req.body.name + path.extname(file.originalname))
   }
 });
 
@@ -99,6 +102,12 @@ var upload = multer({ storage: storage }).single('file');
 app.post('/upload',function(req, res) {
      
     upload(req, res, function (err) {
+        
+        var name = req.body.name.toLowerCase();
+        name = name.replace(' ', '-');
+
+        fs.renameSync(req.file.path, req.file.path.replace('undefined', name));
+
            if (err instanceof multer.MulterError) {
                return res.status(500).json(err)
            } else if (err) {
