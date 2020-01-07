@@ -8,6 +8,13 @@ const multer = require('multer');
 const cors = require('cors');
 const port = process.env.PORT || 5000;
 
+
+
+app.use(express.static('public'));
+
+//Serves all the request which includes /images in the url from Images folder
+app.use('/public/images/upload', express.static(__dirname + '/public/images/upload'));
+
 //DB config
 mongoose.connect(process.env.DATABASE_URL, {
     useNewUrlParser: true,
