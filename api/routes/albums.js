@@ -21,7 +21,7 @@ router.get('/:id', getAlbum, async (req, res) => {
 router.post('/', async (req, res) => {
 
     const album = new Album({
-        name: name,
+        name: req.body.name,
         location: req.body.location
     });
 
