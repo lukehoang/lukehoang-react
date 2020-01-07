@@ -22,7 +22,9 @@ router.post('/', async (req, res) => {
 
     const album = new Album({
         name: req.body.name,
-        location: req.body.location
+        location: req.body.location,
+        path: req.body.path,
+        createdDate: req.body.createdDate
     });
 
     try {

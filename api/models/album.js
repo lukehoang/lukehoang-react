@@ -9,13 +9,12 @@ const albumSchema = new mongoose.Schema({
         type: String,
         required: true
     },
-    image:{
+    path:{
         type: String
     },
     createdDate: {
-        type: Date,
-        required: true,
-        default: Date.now
+        type: String,
+        required: true
     }
     
 });
