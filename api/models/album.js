@@ -21,3 +21,4 @@ const albumSchema = new mongoose.Schema({
 
 //export subscribers data to schema
 module.exports = mongoose.model('Album', albumSchema);
+

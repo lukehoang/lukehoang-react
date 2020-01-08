@@ -97,11 +97,11 @@ const path = require('path');
 
 var storage = multer.diskStorage({
     destination: function (req, file, cb) {
-    cb(null, 'public/images/upload/')
-  },
-  filename: function (req, file, cb) {
-    cb(null, req.body.name + path.extname(file.originalname))
-  }
+        cb(null, 'public/images/upload/temp/');
+    },
+    filename: function (req, file, cb) {
+        cb(null, req.body.name + path.extname(file.originalname));
+    }
 });
 
 var upload = multer({ storage: storage }).single('file');
@@ -110,10 +110,42 @@ app.post('/upload',function(req, res) {
      
     upload(req, res, function (err) {
         
-        var name = req.body.name.toLowerCase();
-        name = name.replace(' ', '-');
+        //rename input param:name, replace 'space' with '-'
+        let name = req.body.name.toLowerCase();
+        name = name.split(' ').join('-');
 
         fs.renameSync(req.file.path, req.file.path.replace('undefined', name));
+
+        //Create new directory based on param:name then move file from Temp => new dir, Then empty Temp
+        let pathTemp = req.file.path;
+        let oldPath = pathTemp.replace('undefined', name);
+        let newPath = oldPath.replace('temp', name);
+
+        const dir = 'public/images/upload/'+name+'/';
+        const dirNeedToEmpty = 'public/images/upload/temp/';
+
+        if (!fs.existsSync(dir)){
+            fs.mkdirSync(dir);
+            
+            var source = fs.createReadStream(oldPath);
+            var dest = fs.createWriteStream(newPath);
+    
+            source.pipe(dest);
+            source.on('end', function() { 
+                fs.readdir(dirNeedToEmpty, (err, files) => {
+                    if (err) throw err;
+                  
+                    for (const file of files) {
+                      fs.unlink(path.join(dirNeedToEmpty, file), err => {
+                        if (err) throw err;
+                      });
+                    }
+                  });
+            });
+            source.on('error', function(err) { /* error */ });
+    
+        }
+
 
            if (err instanceof multer.MulterError) {
                return res.status(500).json(err)
