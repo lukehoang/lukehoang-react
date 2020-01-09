@@ -95,6 +95,9 @@ app.use(cors());
 const fs = require('fs');
 const path = require('path');
 
+const tinify = require("tinify");
+tinify.key = "V4ZnwVFbyYq8HJ9xjcmCdD8rS4RDDxtl";
+
 var storage = multer.diskStorage({
     destination: function (req, file, cb) {
         cb(null, 'public/images/upload/temp/');
@@ -145,6 +148,10 @@ app.post('/upload',function(req, res) {
             source.on('error', function(err) { /* error */ });
     
         }
+
+         //compress images
+         var sourceTini = tinify.fromFile(newPath);
+         sourceTini.toFile(newPath);
 
 
            if (err instanceof multer.MulterError) {
