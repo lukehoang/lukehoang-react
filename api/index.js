@@ -107,7 +107,7 @@ var storage = multer.diskStorage({
     }
 });
 
-var upload = multer({ storage: storage }).single('file');
+var upload = multer({ storage: storage, limits: { fileSize: 8 * 1024 * 1024 }}).single('file');
 
 app.post('/upload',function(req, res) {
      
