@@ -90,7 +90,12 @@ app.post('/send', (req, res) => {
     })
 });
 
-app.use(cors());
+const cors = require('cors');
+
+app.use(cors({
+  origin: 'https://bamboocopter.net',
+  credentials: true
+}));
 
 const fs = require('fs');
 const path = require('path');
