@@ -8,8 +8,7 @@ const multer = require('multer');
 const cors = require('cors');
 const port = process.env.PORT || 5000;
 
-
-
+app.use(cors());
 app.use(express.static('public'));
 
 //Serves all the request which includes /images in the url from Images folder
@@ -24,13 +23,14 @@ const db = mongoose.connection;
 db.on('error', (error) => console.log(error));
 db.once('open', () => console.log('connected to database'));
 
-//accept JSON
-app.use(express.json());
+app.use(bodyParser.json({limit: '50mb'}));
+app.use(bodyParser.urlencoded({limit: '50mb', extended: true, parameterLimit: 50000}));
 
-app.use(bodyParser.urlencoded({extended: true}));
 app.use(function(req, res, next){
     res.header("Access-Control-Allow-Origin", "*");
     res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+    res.header("Access-Control-Allow-Methods", "GET, POST, PUT, PATCH, DELETE, HEAD, OPTIONS");
+    res.header("Access-Control-Allow-Credentials", true);
     next();
 });
 
@@ -41,7 +41,6 @@ const albumsRouter = require('./routes/albums');
 app.use('/albums', albumsRouter);
 
 //Send email API
-
 
 const auth = {
     type: "oauth2",
@@ -90,12 +89,6 @@ app.post('/send', (req, res) => {
     })
 });
 
-const cors = require('cors');
-
-app.use(cors({
-  origin: 'https://bamboocopter.net',
-  credentials: true
-}));
 
 const fs = require('fs');
 const path = require('path');
