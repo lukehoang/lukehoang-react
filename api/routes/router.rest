@@ -6,12 +6,25 @@ GET http://localhost:5000/albums/5e0250359f3dbf41e8ff47d5
 
 ###
 
-POST http://localhost:5000/albums
+
+GET http://localhost:5000/photos
+
+###
+
+POST http://localhost:5000/photos/upload-photos
 Content-TYPE: application/json
 
 {
-    "name": "Luke mung",
-    "location": "philadelphia"
+    "albumName": "Luke mung"
+}
+
+###
+
+POST http://localhost:5000/photos
+Content-TYPE: application/json
+
+{
+    "albumName": "Luke mung"
 }
 
 ###

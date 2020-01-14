@@ -40,6 +40,10 @@ app.get('/', (req, res) => res.json({"message": "this page is returning a json m
 const albumsRouter = require('./routes/albums');
 app.use('/albums', albumsRouter);
 
+const photosRouter = require('./routes/photos');
+app.use('/photos', photosRouter);
+app.use('/photos/upload-photos', photosRouter);
+
 //Send email API
 
 const auth = {
