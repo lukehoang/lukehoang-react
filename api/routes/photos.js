@@ -41,9 +41,8 @@ router.post('/upload-photos', upload.array('imgCollection', 30), (req, res, next
 
     const albumName = req.body.albumName;
     const reqFiles = [];
-    const url = req.protocol + '://' + req.get('host')
     for (var i = 0; i < req.files.length; i++) {
-        reqFiles.push(url + '/public/images/upload/'+albumName+'/' + req.files[i].filename)
+        reqFiles.push('https://api.lukemhoang.com/public/images/upload/'+albumName+'/' + req.files[i].filename)
     }
 
     const photo = new Photo({
@@ -85,9 +84,9 @@ router.post('/upload-photos', upload.array('imgCollection', 30), (req, res, next
         
         //init
         let oldPath = reqFiles[i].replace(albumName, 'temp');
-        oldPath = oldPath.replace('http://localhost:5000/','');
+        oldPath = oldPath.replace('https://api.lukemhoang.com/','');
         let newPath = reqFiles[i];
-        newPath = newPath.replace('http://localhost:5000/','');
+        newPath = newPath.replace('https://api.lukemhoang.com/','');
 
         console.log(oldPath);
         console.log(newPath);

@@ -4,7 +4,7 @@ const app = express();
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const nodemailer = require('nodemailer');
-const multer = require('multer');
+// const multer = require('multer');
 const cors = require('cors');
 const port = process.env.PORT || 5000;
 
@@ -39,6 +39,7 @@ app.get('/', (req, res) => res.json({"message": "this page is returning a json m
 //Test api
 const albumsRouter = require('./routes/albums');
 app.use('/albums', albumsRouter);
+app.use('/albums/upload', albumsRouter);
 
 const photosRouter = require('./routes/photos');
 app.use('/photos', photosRouter);
@@ -91,80 +92,6 @@ app.post('/send', (req, res) => {
             })
         }
     })
-});
-
-
-const fs = require('fs');
-const path = require('path');
-
-const tinify = require("tinify");
-tinify.key = "V4ZnwVFbyYq8HJ9xjcmCdD8rS4RDDxtl";
-
-var storage = multer.diskStorage({
-    destination: function (req, file, cb) {
-        cb(null, 'public/images/upload/temp/');
-    },
-    filename: function (req, file, cb) {
-        cb(null, req.body.name + path.extname(file.originalname));
-    }
-});
-
-var upload = multer({ storage: storage, limits: { fileSize: 8 * 1024 * 1024 }}).single('file');
-
-app.post('/upload',function(req, res) {
-     
-    upload(req, res, function (err) {
-        
-        //rename input param:name, replace 'space' with '-'
-        let name = req.body.name.toLowerCase();
-        name = name.split(' ').join('-');
-
-        fs.renameSync(req.file.path, req.file.path.replace('undefined', name));
-
-        //Create new directory based on param:name then move file from Temp => new dir, Then empty Temp
-        let pathTemp = req.file.path;
-        let oldPath = pathTemp.replace('undefined', name);
-        let newPath = oldPath.replace('temp', name);
-
-        const dir = 'public/images/upload/'+name+'/';
-        const dirNeedToEmpty = 'public/images/upload/temp/';
-
-        if (!fs.existsSync(dir)){
-            fs.mkdirSync(dir);
-            
-            var source = fs.createReadStream(oldPath);
-            var dest = fs.createWriteStream(newPath);
-    
-            source.pipe(dest);
-            source.on('end', function() { 
-                fs.readdir(dirNeedToEmpty, (err, files) => {
-                    if (err) throw err;
-                  
-                    for (const file of files) {
-                      fs.unlink(path.join(dirNeedToEmpty, file), err => {
-                        if (err) throw err;
-                      });
-                    }
-                  });
-            });
-            source.on('error', function(err) { /* error */ });
-    
-        }
-
-         //compress images
-         var sourceTini = tinify.fromFile(newPath);
-         sourceTini.toFile(newPath);
-
-
-           if (err instanceof multer.MulterError) {
-               return res.status(500).json(err)
-           } else if (err) {
-               return res.status(500).json(err)
-           }
-      return res.status(200).send(req.file)
-
-    })
-
 });
 
 
