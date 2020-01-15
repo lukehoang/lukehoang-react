@@ -68,7 +68,73 @@ router.post('/upload-photos', upload.array('imgCollection', 30), (req, res, next
             });
     })
 
-    //compress files, then move to album's directory
+    // Move and compress files processes.
+
+    //init
+    const dir = 'public/images/upload/'+albumName+'/';
+    const dirNeedToEmpty = 'public/images/upload/temp/';
+
+    //create album folder if not existed
+    
+    if (!fs.existsSync(dir)){
+        fs.mkdirSync(dir);
+    }
+
+    //loop through images
+    for(let i = 0; i<reqFiles.length; i++){
+        
+        //init
+        let oldPath = reqFiles[i].replace(albumName, 'temp');
+        oldPath = oldPath.replace('http://localhost:5000/','');
+        let newPath = reqFiles[i];
+        newPath = newPath.replace('http://localhost:5000/','');
+
+        console.log(oldPath);
+        console.log(newPath);
+
+    
+        //move files
+        var source = fs.createReadStream(oldPath);
+        var dest = fs.createWriteStream(newPath);
+
+        source.pipe(dest);
+        source.on('end', function() {
+            console.log('moved');
+            //compress file
+            try {
+                let sourceTini = tinify.fromFile(newPath);
+                sourceTini.toFile(newPath);
+                console.log('compressed');
+            } catch (error) {
+                console.log('file is too large, max is 5MB');
+            }
+            
+        });
+        source.on('error', function(err) { 
+            console.log(err);
+        })
+
+       
+        
+    };
+
+    setTimeout(function () {
+        //empty temp folder
+        fs.readdir(dirNeedToEmpty, (err, files) => {
+
+            if (err) throw err;
+        
+            for (const file of files) {
+            fs.unlink(path.join(dirNeedToEmpty, file), err => {
+                if (err) throw err;
+            });
+            }
+
+            console.log('empty Temp');
+        });
+    }, 2000)
+    
+
 })
 
 //get all albums
@@ -82,7 +148,7 @@ router.get('/', async (req, res) => {
 });
 
 //get album by id
-router.get('/:id', getPhoto, async (req, res) => {
+router.get('/:albumName', getPhotoByName, async (req, res) => {
     res.json(res.photo);
 });
 
@@ -120,6 +186,26 @@ async function getPhoto(req, res, next){
         photo = await Photo.findById(req.params.id);
         if(photo == null){
             return res.status(404).json({message: 'album not found'});
+        }
+    } catch (err) {
+        return res.status(500).json({message: err.message});
+    }
+
+    res.photo = photo;
+    next();
+}
+
+async function getPhotoByName(req, res, next){
+
+    let albumName = req.params.albumName;
+    console.log(albumName);
+
+    let query = {albumName: req.params.albumName};
+
+    try {
+        photo = await Photo.find(query);
+        if(photo == null){
+            return res.status(404).json({message: 'photo not found'});
         }
     } catch (err) {
         return res.status(500).json({message: err.message});

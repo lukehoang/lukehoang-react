@@ -11,6 +11,10 @@ GET http://localhost:5000/photos
 
 ###
 
+GET http://localhost:5000/photos/Japan-2019
+
+###
+
 POST http://localhost:5000/photos/upload-photos
 Content-TYPE: application/json
 
