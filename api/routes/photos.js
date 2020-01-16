@@ -182,11 +182,31 @@ router.patch('/:id/:url', getPhotoById, async (req, res) => {
 });
 
 //delete
-router.delete('/:albumName', getPhotoByName, async (req, res) => { 
+router.delete('/:albumName', getPhotoByName, async (req, res) => {
+    
+    let myAlbums = res.photo;
+    let photos = [];
+    myAlbums.forEach(album => {
+        let collections = album.imgCollection;
+        collections.forEach(collection => {
+            photos.push(collection);
+        });
+    });
+
+    photos.forEach(thisPhoto => {
+        let path = thisPhoto.replace('https://api.lukemhoang.com/','');
+        try {
+            fs.unlinkSync(path)
+            console.log('removed '+path+' from disk');
+        } catch(err) {
+            console.error(err)
+        }
+    });
+
     try {
         await Photo.deleteMany({albumName : req.params.albumName});
         console.log('deleted');
-        res.json({message: "sub was deleted."})
+        res.json({message: "all photos was deleted."})
     } catch (err) {
         console.log('failed');
         res.status(500).json({message: err.message});
