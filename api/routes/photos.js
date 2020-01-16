@@ -153,7 +153,7 @@ router.get('/:albumName', getPhotoByName, async (req, res) => {
 
 
 //update
-router.patch('/:id/:url', getPhotoById, async (req, res) => {
+router.patch('/deleteOnePhoto/:id/:url', getPhotoById, async (req, res) => {
 
     let albumName = res.photo.albumName;
     let path = decodeURI(req.params.url).replace('https://api.lukemhoang.com/','');
@@ -182,7 +182,7 @@ router.patch('/:id/:url', getPhotoById, async (req, res) => {
 });
 
 //delete
-router.delete('/:albumName', getPhotoByName, async (req, res) => {
+router.delete('/deleteAllPhotos/:albumName', getPhotoByName, async (req, res) => {
     
     let myAlbums = res.photo;
     let photos = [];
@@ -202,6 +202,58 @@ router.delete('/:albumName', getPhotoByName, async (req, res) => {
             console.error(err)
         }
     });
+
+    try {
+        await Photo.deleteMany({albumName : req.params.albumName});
+        console.log('deleted');
+        res.json({message: "all photos was deleted."})
+    } catch (err) {
+        console.log('failed');
+        res.status(500).json({message: err.message});
+    }
+});
+
+
+//delete the album files
+router.delete('/deleteAlbum/:albumName', getPhotoByName, async (req, res) => {
+    
+    let myAlbums = res.photo;
+    let photos = [];
+    myAlbums.forEach(album => {
+        let collections = album.imgCollection;
+        collections.forEach(collection => {
+            photos.push(collection);
+        });
+    });
+
+    photos.forEach(thisPhoto => {
+        let path = thisPhoto.replace('https://api.lukemhoang.com/','');
+        try {
+            fs.unlinkSync(path)
+            console.log('removed '+path+' from disk');
+        } catch(err) {
+            console.error(err)
+        }
+    });
+
+
+    let thisDir = 'public/images/upload/'+req.params.albumName+'/';
+
+    setTimeout(function () {
+        //empty temp folder
+        fs.readdir(thisDir, (err, files) => {
+
+            if (err) throw err;
+        
+            for (const file of files) {
+            fs.unlink(path.join(thisDir, file), err => {
+                if (err) throw err;
+            });
+            }
+
+            console.log('empty Temp');
+        });
+    }, 2000)
 
     try {
         await Photo.deleteMany({albumName : req.params.albumName});

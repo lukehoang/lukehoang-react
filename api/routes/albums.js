@@ -164,11 +164,13 @@ router.patch('/:id', getAlbum, async (req, res) => {
 });
 
 //delete
-router.delete('/:name', deleteAlbumByName, async (req, res) => { 
+router.delete('/deleteAlbum/:albumName', async (req, res) => { 
     try {
-        await res.album.remove();
-        res.json({message: "sub was deleted."})
+        await Album.deleteMany({name : req.params.albumName.replace('-',' ').toLowerCase()});
+        console.log('deleted');
+        res.json({message: "all photos was deleted."})
     } catch (err) {
+        console.log('failed');
         res.status(500).json({message: err.message});
     }
 });
