@@ -1,8 +1,8 @@
 const express = require('express');
 const router = express.Router();
 const multer = require('multer');
-const mongoose = require('mongoose');
-const uuidv4 = require('uuid/v4');
+// const mongoose = require('mongoose');
+// const uuidv4 = require('uuid/v4');
 const fs = require('fs');
 const path = require('path');
 const Album = require('../models/album');
@@ -51,7 +51,7 @@ router.post('/upload', upload.single('file'), (req, res, next) => {
     mongoPath = mongoPath.replace('temp', name);
     
     const album = new Album({
-        name: req.body.name,
+        name: req.body.name.toLowerCase(),
         location: req.body.location,
         path: mongoPath,
         createdDate: req.body.createdDate
@@ -164,7 +164,7 @@ router.patch('/:id', getAlbum, async (req, res) => {
 });
 
 //delete
-router.delete('/:id', getAlbum, async (req, res) => { 
+router.delete('/:name', deleteAlbumByName, async (req, res) => { 
     try {
         await res.album.remove();
         res.json({message: "sub was deleted."})
@@ -178,6 +178,20 @@ router.delete('/:id', getAlbum, async (req, res) => {
 async function getAlbum(req, res, next){
     try {
         album = await Album.findById(req.params.id);
+        if(album == null){
+            return res.status(404).json({message: 'album not found'});
+        }
+    } catch (err) {
+        return res.status(500).json({message: err.message});
+    }
+
+    res.album = album;
+    next();
+}
+
+async function deleteAlbumByName(req, res, next){
+    try {
+        album = await Album.find({name : req.params.name});
         if(album == null){
             return res.status(404).json({message: 'album not found'});
         }

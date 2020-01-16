@@ -39,7 +39,7 @@ var upload = multer({
 //create
 router.post('/upload-photos', upload.array('imgCollection', 30), (req, res, next) => {
 
-    const albumName = req.body.albumName;
+    const albumName = req.body.albumName.toLowerCase();
     const reqFiles = [];
     for (var i = 0; i < req.files.length; i++) {
         reqFiles.push('https://api.lukemhoang.com/public/images/upload/'+albumName+'/' + req.files[i].filename)
@@ -47,7 +47,7 @@ router.post('/upload-photos', upload.array('imgCollection', 30), (req, res, next
 
     const photo = new Photo({
         _id: new mongoose.Types.ObjectId(),
-        albumName: req.body.albumName,
+        albumName: req.body.albumName.toLowerCase(),
         imgCollection: reqFiles
     });
 
@@ -152,35 +152,50 @@ router.get('/:albumName', getPhotoByName, async (req, res) => {
 });
 
 
-// //update
-// router.patch('/:id', getAlbum, async (req, res) => {
-//     if(req.body.name != null){
-//         res.album.name = req.body.name;
-//     }
-//     if(req.body.location != null){
-//         res.album.location = req.body.location;
-//     }
-//     try {
-//         const updatedSub = await res.album.save();
-//         res.json(updatedSub);
-//     } catch (err) {
-//         res.status(400).json({message: err.message})
-//     }
-// });
+//update
+router.patch('/:id/:url', getPhotoById, async (req, res) => {
 
-// //delete
-// router.delete('/:id', getAlbum, async (req, res) => { 
-//     try {
-//         await res.album.remove();
-//         res.json({message: "sub was deleted."})
-//     } catch (err) {
-//         res.status(500).json({message: err.message});
-//     }
-// });
+    let albumName = res.photo.albumName;
+    let path = decodeURI(req.params.url).replace('https://api.lukemhoang.com/','');
+
+    res.photo.imgCollection.splice(res.photo.imgCollection.indexOf(req.params.url), 1);
+    
+
+    try {
+        fs.unlinkSync(path)
+        console.log('removed file from disk');
+    } catch(err) {
+        console.error(err)
+    }
+
+    try {
+        const updatedSub = await res.photo.save();
+        console.log('updated');
+        res.json(updatedSub);
+
+
+    } catch (err) {
+        res.status(400).json({message: err.message})
+    }
+
+
+});
+
+//delete
+router.delete('/:albumName', getPhotoByName, async (req, res) => { 
+    try {
+        await Photo.deleteMany({albumName : req.params.albumName});
+        console.log('deleted');
+        res.json({message: "sub was deleted."})
+    } catch (err) {
+        console.log('failed');
+        res.status(500).json({message: err.message});
+    }
+});
 
 
 //middleware
-async function getPhoto(req, res, next){
+async function getPhotoById(req, res, next){
     try {
         photo = await Photo.findById(req.params.id);
         if(photo == null){
@@ -213,5 +228,6 @@ async function getPhotoByName(req, res, next){
     res.photo = photo;
     next();
 }
+
 
 module.exports = router;

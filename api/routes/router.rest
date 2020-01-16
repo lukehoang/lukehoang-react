@@ -37,6 +37,10 @@ DELETE  http://localhost:5000/albums/5e1017ef1db1a26897dc6250
 
 ###
 
+DELETE  http://localhost:5000/photos/road-trip-2019
+
+###
+
 PATCH http://localhost:5000/albums/5e0250359f3dbf41e8ff47d5
 Content-Type: application/json
 
