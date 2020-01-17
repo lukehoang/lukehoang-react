@@ -21,6 +21,15 @@ Content-TYPE: application/json
 {
     "albumName": "Luke mung"
 }
+###
+
+POST http://localhost:5000/layouts/create
+Content-TYPE: application/json
+
+{
+    "name" : "homepage"
+}
+
 
 ###
 

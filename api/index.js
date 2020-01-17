@@ -4,7 +4,6 @@ const app = express();
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const nodemailer = require('nodemailer');
-// const multer = require('multer');
 const cors = require('cors');
 const port = process.env.PORT || 5000;
 
@@ -44,6 +43,10 @@ app.use('/albums/upload', albumsRouter);
 const photosRouter = require('./routes/photos');
 app.use('/photos', photosRouter);
 app.use('/photos/upload-photos', photosRouter);
+
+const layoutsRouter = require('./routes/layouts');
+app.use('/layouts', layoutsRouter);
+app.use('/layouts/create', layoutsRouter);
 
 //Send email API
 
