@@ -6,15 +6,16 @@ const albumSchema = new mongoose.Schema({
         required: true
     },
     location: {
-        type: String,
-        required: true
+        type: String
     },
     path:{
         type: String
     },
+    caption:{
+        type: String
+    },
     createdDate: {
-        type: String,
-        required: true
+        type: String
     }
     
 });

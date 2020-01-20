@@ -54,6 +54,7 @@ router.post('/upload', upload.single('file'), (req, res, next) => {
         name: req.body.name.toLowerCase(),
         location: req.body.location,
         path: mongoPath,
+        caption: req.body.caption,
         createdDate: req.body.createdDate
     });
 
@@ -142,18 +143,24 @@ router.get('/', async (req, res) => {
 });
 
 //get album by id
-router.get('/:id', getAlbum, async (req, res) => {
+router.get('/:albumName', getAlbumByName, async (req, res) => {
     res.json(res.album);
 });
 
 
 //update
-router.patch('/:id', getAlbum, async (req, res) => {
+router.patch('/update/:id', getAlbum, async (req, res) => {
     if(req.body.name != null){
         res.album.name = req.body.name;
     }
     if(req.body.location != null){
         res.album.location = req.body.location;
+    }
+    if(req.body.caption != null){
+        res.album.caption = req.body.caption;
+    }
+    if(req.body.createdDate != null){
+        res.album.createdDate = req.body.createdDate;
     }
     try {
         const updatedSub = await res.album.save();
@@ -191,9 +198,9 @@ async function getAlbum(req, res, next){
     next();
 }
 
-async function deleteAlbumByName(req, res, next){
+async function getAlbumByName(req, res, next){
     try {
-        album = await Album.find({name : req.params.name});
+        album = await Album.find({name : req.params.albumName.split('-').join(' ').toLowerCase()});
         if(album == null){
             return res.status(404).json({message: 'album not found'});
         }
@@ -202,6 +209,7 @@ async function deleteAlbumByName(req, res, next){
     }
 
     res.album = album;
+    console.log(album);
     next();
 }
 
