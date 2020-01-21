@@ -150,8 +150,69 @@ router.get('/:albumName', getAlbumByName, async (req, res) => {
 
 //update
 router.patch('/update/:id', getAlbum, async (req, res) => {
-    if(req.body.name != null){
+
+    if(req.body.name != null && req.body.name != res.album.name){
+
+        let oldName = res.album.name.toLowerCase();
+        oldName = oldName.split(' ').join('-');
+
+        let newName = req.body.name.toLowerCase();
+        newName = newName.split(' ').join('-');
+            
+        const createNewDir = 'public/images/upload/'+newName+'/';
+        const dirToDelete = 'public/images/upload/'+oldName+'/';
+
+        function walkSync(dir) {
+            if (!fs.lstatSync(dir).isDirectory()) return dir;
+        
+            return fs.readdirSync(dir).map(f => walkSync(path.join(dir, f))); // `join("\n")`
+        }
+
+        var photosList = walkSync(dirToDelete);
+
+        console.log(photosList);
+          
+        if (!fs.existsSync(createNewDir)){
+            fs.mkdirSync(createNewDir);
+        }
+
+        let oldDir = req.body.path.replace('https://api.lukemhoang.com/', '');
+        let newDir = oldDir.replace('/'+oldName+'/','/'+newName+'/');
+        let newPath = newDir.replace('/'+oldName+'.','/'+newName+'.');
+
+        console.log(oldDir);
+        console.log(newDir);
+        console.log(newPath);
+
+        //move files
+
+        photosList.forEach(file => {
+            try {
+                fs.renameSync(file, file.replace('/'+oldName+'/','/'+newName+'/'));
+                console.log('moved ' + file + ' to ' + file.replace('/'+oldName+'/','/'+newName+'/'));
+            } catch (err) {
+                console.error(err)
+            }
+        });
+
+        try {
+            fs.renameSync(newDir,newPath)
+            console.log('renamed file');
+        } catch (err) {
+            console.error(err)
+        }
+
+        fs.rmdir(dirToDelete, function(err) {
+            if (err) {
+              throw err
+            } else {
+              console.log("Successfully removed the empty directory!")
+            }
+          })
+        
         res.album.name = req.body.name;
+        res.album.path = req.body.path.split(oldName).join(newName);
+        
     }
     if(req.body.location != null){
         res.album.location = req.body.location;
