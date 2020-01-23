@@ -63,6 +63,11 @@ app.post('/send', (req, res) => {
     var name = req.body.name;
     var email = req.body.email;
     var message = req.body.message;
+    if(req.body.message != null){
+        var domain =  req.body.domain;
+    }else{
+        var domain = 'lukehoang.com';
+    }
 
     response = {
         name: name,
@@ -73,7 +78,7 @@ app.post('/send', (req, res) => {
     var mailOptions = {
         from: name,
         to: 'mungleephoto@gmail.com',
-        subject: 'Lukehoang.com | New message from: ' + name,
+        subject: domain+' | New message from: ' + name,
         text: message,
         html: 'Message from: ' + name + '<br><br>Email: ' + email + '<br><br>Message: ' + message,
     };
