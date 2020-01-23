@@ -1,11 +1,12 @@
 const express = require('express');
 const router = express.Router();
 const multer = require('multer');
-// const mongoose = require('mongoose');
+const mongoose = require('mongoose');
 // const uuidv4 = require('uuid/v4');
 const fs = require('fs');
 const path = require('path');
 const Album = require('../models/album');
+const Photo = require('../models/photo');
 const tinify = require("tinify");
 tinify.key = "V4ZnwVFbyYq8HJ9xjcmCdD8rS4RDDxtl";
 
@@ -186,8 +187,14 @@ router.patch('/update/:id', getAlbum, async (req, res) => {
 
         //move files
 
+        let reqFiles = [];
+
         photosList.forEach(file => {
             try {
+                let tempFile = 'https://api.lukemhoang.com/'+file.replace('/'+oldName+'/','/'+newName+'/');
+                if(tempFile.indexOf(oldName+'.') == -1){
+                    reqFiles.push(tempFile);
+                }
                 fs.renameSync(file, file.replace('/'+oldName+'/','/'+newName+'/'));
                 console.log('moved ' + file + ' to ' + file.replace('/'+oldName+'/','/'+newName+'/'));
             } catch (err) {
@@ -212,6 +219,33 @@ router.patch('/update/:id', getAlbum, async (req, res) => {
         
         res.album.name = req.body.name;
         res.album.path = req.body.path.split(oldName).join(newName);
+
+        //delete old photos in database
+        try {
+            await Photo.deleteMany({albumName : oldName});
+            console.log('deleted');
+            // res.json({message: "all photos was deleted."})
+        } catch (err) {
+            console.log('failed');
+            // res.status(500).json({message: err.message});
+        }
+
+        const photo = new Photo({
+            _id: new mongoose.Types.ObjectId(),
+            albumName: newName,
+            imgCollection: reqFiles
+        });
+    
+         photo.save().then(result => {
+            // res.status(201).json({
+            //     message: "Done upload!"
+            // })
+        }).catch(err => {
+            console.log(err);
+                // res.status(500).json({
+                //     error: err
+                // });
+        })
         
     }
     if(req.body.location != null){
