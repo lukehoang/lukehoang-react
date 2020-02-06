@@ -78,8 +78,9 @@ export default class HomePage extends Component {
                                 </h3>
                             </div>
                             <div className={style.copy}>
-                                <p>Passionate web developer based in Philadelphia, PA. I like to keep everything simple. My goals are focus on content and conveying the message that what you want to send to your audiences.</p>
-                                <p>I'm also working on my Photo - Videographer hobby and love to capture every special moment that can't be rolled back ever again.</p>
+                                <p>Passionate web developer and photographer based in Philadelphia, PA. I learned how to create my first website <a href="https://bamboocopter.net" target="_blank">Bamboocopter.net</a> many years ago because I couldn't afford to pay someone to do it for me. My journey to become a coder has started since then.</p>
+                                <p>I like to keep everything simple. My goals are focus on content and conveying the message that what you want to send to your audiences.</p>
+                                <h2><em>"Choose a job you love, and you will never have to work a day in your life."</em></h2>
                             </div>
                         </div>
                     </div>
