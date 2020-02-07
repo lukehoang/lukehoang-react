@@ -58,9 +58,9 @@ export default class HomePage extends Component {
             <div className={style.wrapper}>
                 <div className={`${style.content} ${style.flex}`}>
                     <div className={`${style.header_nav} ${style.keyframes_slidein}`}>
-                        <h1> <a href="" className={`${style.bio} ${style.h1_desktop}`} onMouseEnter={() => this.handleHoverIn('bio')} onMouseLeave={() => this.handleHoverOut()}>BIO</a></h1>
-                        <h1> <a href="" className={`${style.skills} ${style.h1_desktop}`} onMouseEnter={() => this.handleHoverIn('skills')} onMouseLeave={() => this.handleHoverOut()}>SKILLS</a></h1>
-                        <h1> <a href="" className={`${style.experiences} ${style.h1_desktop}`} onMouseEnter={() => this.handleHoverIn('exp')} onMouseLeave={() => this.handleHoverOut()}>EXPERIENCES</a></h1>
+                        <h1> <a href="" className={`${style.bio} ${style.h1_desktop}`} onClick={() => this.handleHoverIn('bio')}>BIO</a></h1>
+                        <h1> <a href="" className={`${style.skills} ${style.h1_desktop}`} onClick={() => this.handleHoverIn('skills')}>SKILLS</a></h1>
+                        <h1> <a href="" className={`${style.experiences} ${style.h1_desktop}`} onClick={() => this.handleHoverIn('exp')}>EXPERIENCES</a></h1>
                     </div>
                     <div className={style.profile_mobile}>
                         <img src={profile}/>
