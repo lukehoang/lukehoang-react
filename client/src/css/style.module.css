@@ -102,6 +102,10 @@ General
     clear: both;
     height: 1px;
 }
+.color_link{
+    text-decoration: underline !important;
+    color: #005892 !important;
+}
 
 
 
@@ -269,6 +273,7 @@ Main
 }
 .main .header_nav a{
     color: #BAC0CF;
+    cursor: pointer;
 }
 .main .header_nav a:hover{
     text-decoration: underline;
@@ -309,7 +314,6 @@ Main
     letter-spacing: .5px;
     font-size: 1rem;
 }
-
 
 /******************************
 ******************************/

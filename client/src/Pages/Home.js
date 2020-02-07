@@ -58,9 +58,9 @@ export default class HomePage extends Component {
             <div className={style.wrapper}>
                 <div className={`${style.content} ${style.flex}`}>
                     <div className={`${style.header_nav} ${style.keyframes_slidein}`}>
-                        <h1> <a href="" className={`${style.bio} ${style.h1_desktop}`} onClick={() => this.handleHoverIn('bio')}>BIO</a></h1>
-                        <h1> <a href="" className={`${style.skills} ${style.h1_desktop}`} onClick={() => this.handleHoverIn('skills')}>SKILLS</a></h1>
-                        <h1> <a href="" className={`${style.experiences} ${style.h1_desktop}`} onClick={() => this.handleHoverIn('exp')}>EXPERIENCES</a></h1>
+                        <h1> <a className={`${style.bio} ${style.h1_desktop}`} onClick={() => this.handleHoverIn('bio')}>BIO</a></h1>
+                        <h1> <a className={`${style.skills} ${style.h1_desktop}`} onClick={() => this.handleHoverIn('skills')}>SKILLS</a></h1>
+                        <h1> <a className={`${style.experiences} ${style.h1_desktop}`} onClick={() => this.handleHoverIn('exp')}>EXPERIENCES</a></h1>
                     </div>
                     <div className={style.profile_mobile}>
                         <img src={profile}/>
@@ -69,7 +69,7 @@ export default class HomePage extends Component {
                         <div className={style.profile} style={{opacity: this.state.profile_opacity ? 1 : 0}}>
                         </div>
                     </div>
-                    <div className={`${style.box} ${style.info}`} id={style.info} style={{opacity: this.state.info_opacity ? 1 : 0}}>
+                    <div className={`${style.box} ${style.info}`} id={style.info} style={{zIndex: this.state.info_opacity ? 9 : 0, opacity: this.state.info_opacity ? 1 : 0}}>
                         <div>
                             <div className={style.title}>
                                 <h3 className={style.headline}>
@@ -78,7 +78,7 @@ export default class HomePage extends Component {
                                 </h3>
                             </div>
                             <div className={style.copy}>
-                                <p>Passionate web developer and photographer based in Philadelphia, PA. I learned how to create my first website <a href="https://bamboocopter.net" target="_blank">Bamboocopter.net</a> many years ago because I couldn't afford to pay someone to do it for me. My journey to become a coder has started since then.</p>
+                                <p>Passionate web developer and photographer based in Philadelphia, PA. I learned how to create my first website <a className={style.color_link} href="https://bamboocopter.net" target="_blank">Bamboocopter.net</a> many years ago because I couldn't afford to pay someone to do it for me. My journey to become a coder has started since then.</p>
                                 <p>I like to keep everything simple. My goals are focus on content and conveying the message that what you want to send to your audiences.</p>
                                 <p><em>"Choose a job you love, and you will never have to work a day in your life."</em></p>
                             </div>
@@ -87,7 +87,7 @@ export default class HomePage extends Component {
 
 
 
-                    <div className={`${style.box} ${style.skills_box}`} id={style.skills} style={{opacity: this.state.skills_opacity ? 1 : 0}}>
+                    <div className={`${style.box} ${style.skills_box}`} id={style.skills} style={{zIndex: this.state.skills_opacity ? 9 : 0, opacity: this.state.skills_opacity ? 1 : 0}}>
                         <div>
                             <h3>This page was built using React.js</h3>
                             <div className={style.skill}>
@@ -132,7 +132,7 @@ export default class HomePage extends Component {
 
 
 
-                    <div className={`${style.box} ${style.experiences_box}`} id={style.experiences} style={{opacity: this.state.exp_opacity ? 1 : 0}}>
+                    <div className={`${style.box} ${style.experiences_box}`} id={style.experiences} style={{zIndex: this.state.exp_opacity ? 9 : 0, opacity: this.state.exp_opacity ? 1 : 0}}>
                         <div className={style.timeline}>
                             <div className={style.entry}>
                                 <div className={style.title}>
