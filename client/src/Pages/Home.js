@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import logo_temple from '../img/logo_temple.png';
 import logo_oxford from '../img/logo_oxford.png';
 import profile from '../img/profile.jpg';
+import { NavLink } from 'react-router-dom';
 
 import style from '../css/style.module.css';
 
@@ -58,9 +59,10 @@ export default class HomePage extends Component {
             <div className={style.wrapper}>
                 <div className={`${style.content} ${style.flex}`}>
                     <div className={`${style.header_nav} ${style.keyframes_slidein}`}>
-                        <h1> <a className={`${style.bio} ${style.h1_desktop}`} onClick={() => this.handleHoverIn('bio')}>BIO</a></h1>
-                        <h1> <a className={`${style.skills} ${style.h1_desktop}`} onClick={() => this.handleHoverIn('skills')}>SKILLS</a></h1>
-                        <h1> <a className={`${style.experiences} ${style.h1_desktop}`} onClick={() => this.handleHoverIn('exp')}>EXPERIENCES</a></h1>
+                        <h1> <a className={`${style.bio} ${style.h1_desktop} ` + (this.state.info_opacity ? `${style.active}` : '' )} onClick={() => this.handleHoverIn('bio')}>BIO</a></h1>
+                        <h1> <a className={`${style.skills} ${style.h1_desktop} ` + (this.state.skills_opacity ? `${style.active}` : '' )} onClick={() => this.handleHoverIn('skills')}>SKILLS</a></h1>
+                        <h1> <a className={`${style.experiences} ${style.h1_desktop} ` + (this.state.exp_opacity ? `${style.active}` : '' )} onClick={() => this.handleHoverIn('exp')}>EXPERIENCES</a></h1>
+                        <h1><NavLink to="/projects" className={`${style.h1_desktop}`}>WORKS</NavLink></h1>
                     </div>
                     <div className={style.profile_mobile}>
                         <img src={profile}/>
