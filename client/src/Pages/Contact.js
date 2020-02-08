@@ -28,7 +28,8 @@ export default class ContactPage extends Component {
             data: {
                 name: name,
                 email: email,
-                message: message
+                message: message,
+                domain: 'lukehoang.com'
             }
         }).then((response)=>{
             if(response.data.status === 'success'){
