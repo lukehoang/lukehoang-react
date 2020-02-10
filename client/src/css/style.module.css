@@ -77,22 +77,27 @@ General
 .hidden {
     display: none;
 }
-.btn{
+.btn,
+a.btn{
     background: #6fd1cc;
     border: 1px solid #6fd1cc; 
     box-shadow: 1px 2px 2px rgba(49,47,47,.36);
     color: #fff;
     padding: .5em 1.5em;
-    border-radius: 50px;
-    margin: 0 25px;
     cursor: pointer;
+    font-weight: bold;
 }
-.btn:hover {
+.btn:hover,
+a.btn:hover {
     background: #fff;
     border: 1px solid #fff; 
     box-shadow: 1px 2px 2px #9292925b;
     color: #6fd1cc;
     font-weight: bold;
+}
+.btn_sm,
+a.btn_sm{
+    padding: 0px 7px;
 }
 .fa-2x {
     font-size: 1.8em !important;
@@ -435,9 +440,12 @@ Main
 }
 .main .skills_box > div {
     width: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 .skill {
-    margin: 1em 0;
+    margin: 7px 0;
 }
 .skill h3 {
     font-size: 1.1rem;

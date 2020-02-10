@@ -82,8 +82,8 @@ export default class HomePage extends Component {
                             <div className={style.copy}>
                                 <p>Passionate web developer and photographer based in Philadelphia, PA. I learned how to create my first website <a className={style.color_link} href="https://bamboocopter.net" target="_blank">Bamboocopter.net</a> many years ago because I couldn't afford to pay someone to do it for me. My journey to become a coder has started since then.</p>
                                 <p>I like to keep everything simple. My goals are focus on content and conveying the message that what you want to send to your audiences.</p>
-                                <NavLink to="/contact">WORKS</NavLink>
-                                <p><em>"Choose a job you love, and you will never have to work a day in your life."</em></p>
+                                <p><strong>"Choose a job you love, and you will never have to work a day in your life."</strong></p>
+                                <NavLink className={`${style.btn} ${style.btn_sm}`} to="/contact">Let's talk</NavLink>
                             </div>
                         </div>
                     </div>
@@ -129,6 +129,9 @@ export default class HomePage extends Component {
                                     <div className={style.black}></div>
                                     <div className={style.white}></div>
                                 </div>
+                            </div>
+                            <div className={style.skill}>
+                                <NavLink className={`${style.btn} ${style.btn_sm}`} to="/contact">See my works</NavLink>
                             </div>
                         </div>
                     </div>
