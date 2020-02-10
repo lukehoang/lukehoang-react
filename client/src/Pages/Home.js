@@ -83,7 +83,9 @@ export default class HomePage extends Component {
                             <div className={style.copy}>
                                 <p>Hi! My name is Luke Hoang, a passionate web developer and photographer based in Philadelphia, PA. I like to keep things simple and focus on conveying the message that what you want to send to your audiences.</p>
                                 <p>Many years ago, I learned coding by creating my photography website <a className={style.color_link} href="https://bamboocopter.net" target="_blank">Bamboocopter.net</a>, because I couldn't afford to pay someone to do it <i className="fa fa-smile-o fa-lg" aria-hidden="true"></i>. My journey to become a coder has started since then.</p>
-                                <NavLink className={`${style.btn} ${style.btn_sm}`} to="/contact">Let's talk</NavLink>
+                                <p>
+                                    <NavLink className={`${style.btn} ${style.btn_sm}`} to="/contact">Let's talk</NavLink>
+                                </p>
                                 <p><strong>"Choose a job you love, and you will never have to work a day in your life."</strong></p>
                             </div>
                         </div>
