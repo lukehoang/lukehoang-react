@@ -82,6 +82,7 @@ export default class HomePage extends Component {
                             <div className={style.copy}>
                                 <p>Passionate web developer and photographer based in Philadelphia, PA. I learned how to create my first website <a className={style.color_link} href="https://bamboocopter.net" target="_blank">Bamboocopter.net</a> many years ago because I couldn't afford to pay someone to do it for me. My journey to become a coder has started since then.</p>
                                 <p>I like to keep everything simple. My goals are focus on content and conveying the message that what you want to send to your audiences.</p>
+                                <NavLink to="/contact">WORKS</NavLink>
                                 <p><em>"Choose a job you love, and you will never have to work a day in your life."</em></p>
                             </div>
                         </div>
@@ -94,7 +95,7 @@ export default class HomePage extends Component {
                             <h3>This page was built using React.js</h3>
                             <div className={style.skill}>
                                 <h3>Front-End</h3>
-                                <p>Javascript/jQuery/React.Js</p>
+                                <p>Javascript/jQuery/React.Js/Bootstrap</p>
                                 <div className={`${style.bar} ${style.front_end}`}>
                                     <div className={style.black}></div>
                                     <div className={style.white}></div>
@@ -104,7 +105,7 @@ export default class HomePage extends Component {
 
                             <div className={style.skill}>
                                 <h3>Back-End</h3>
-                                <p>PHP/C#/Node/REST API</p>
+                                <p>PHP/Node/C#/REST API</p>
                                 <div className={`${style.bar} ${style.back_end}`}>
                                     <div className={style.black}></div>
                                     <div className={style.white}></div>
@@ -114,7 +115,7 @@ export default class HomePage extends Component {
 
                             <div className={style.skill}>
                                 <h3>Database</h3>
-                                <p>SQL/MySQL</p>
+                                <p>MySQL/MongoDB</p>
                                 <div className={`${style.bar} ${style.database}`}>
                                     <div className={style.black}></div>
                                     <div className={style.white}></div>
