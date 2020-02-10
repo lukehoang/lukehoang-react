@@ -310,8 +310,17 @@ Main
     opacity: 0;
     background: #f3d250;
 }
-.main .info div {
+.main .info>div {
     padding: .5em 3em;
+    position: relative;
+}
+.main .info .info_img{
+    position: absolute;
+    right: 35px;
+    top: -15px;
+}
+.main .info .info_img img{
+    height: 125px;
 }
 .main .info .headline {
     font-size: 3rem;
@@ -855,6 +864,9 @@ Responsive CSS
 
     .main .info div {
         padding: 1em;
+    }
+    .main .info .info_img{
+       display: none;
     }
     .main .info .headline {
         font-size: 2rem;
