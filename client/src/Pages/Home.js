@@ -59,10 +59,10 @@ export default class HomePage extends Component {
             <div className={style.wrapper}>
                 <div className={`${style.content} ${style.flex}`}>
                     <div className={`${style.header_nav} ${style.keyframes_slidein}`}>
-                        <h1> <a className={`${style.bio} ${style.h1_desktop} ` + (this.state.info_opacity ? `${style.active}` : '' )} onClick={() => this.handleHoverIn('bio')}>About</a></h1>
-                        <h1> <a className={`${style.experiences} ${style.h1_desktop} ` + (this.state.exp_opacity ? `${style.active}` : '' )} onClick={() => this.handleHoverIn('exp')}>Experiences</a></h1>
-                        <h1> <a className={`${style.skills} ${style.h1_desktop} ` + (this.state.skills_opacity ? `${style.active}` : '' )} onClick={() => this.handleHoverIn('skills')}>Skills</a></h1>
-                        <h1><NavLink to="/projects" className={`${style.h1_desktop}`}>Works</NavLink></h1>
+                        <h1> <a className={`${style.bio} ${style.h1_desktop} ` + (this.state.info_opacity ? `${style.active}` : '' )} onClick={() => this.handleHoverIn('bio')}>ABOUT</a></h1>
+                        <h1> <a className={`${style.experiences} ${style.h1_desktop} ` + (this.state.exp_opacity ? `${style.active}` : '' )} onClick={() => this.handleHoverIn('exp')}>EXPERIENCES</a></h1>
+                        <h1> <a className={`${style.skills} ${style.h1_desktop} ` + (this.state.skills_opacity ? `${style.active}` : '' )} onClick={() => this.handleHoverIn('skills')}>SKILLS</a></h1>
+                        <h1><NavLink to="/projects" className={`${style.h1_desktop}`}>WORKS</NavLink></h1>
                     </div>
                     <div className={style.profile_mobile}>
                         <img src={profile}/>
@@ -81,8 +81,8 @@ export default class HomePage extends Component {
                                 </h3>
                             </div>
                             <div className={style.copy}>
-                                <p>Hi! My name is Luke Hoang, a passionate web developer and photographer based in Philadelphia, PA. Many years ago, I learned coding by creating my photography website <a className={style.color_link} href="https://bamboocopter.net" target="_blank">Bamboocopter.net</a>, because I couldn't afford to pay someone to do it <i className="fa fa-smile-o fa-lg" aria-hidden="true"></i>. My journey to become a coder has started since then.</p>
-                                <p>I like to keep things simple and focus on conveying the message that what you want to send to your audiences.</p>
+                                <p>Hi! My name is Luke Hoang, a passionate web developer and photographer based in Philadelphia, PA. I like to keep things simple and focus on conveying the message that what you want to send to your audiences.</p>
+                                <p>Many years ago, I learned coding by creating my photography website <a className={style.color_link} href="https://bamboocopter.net" target="_blank">Bamboocopter.net</a>, because I couldn't afford to pay someone to do it <i className="fa fa-smile-o fa-lg" aria-hidden="true"></i>. My journey to become a coder has started since then.</p>
                                 <NavLink className={`${style.btn} ${style.btn_sm}`} to="/contact">Let's talk</NavLink>
                                 <p><strong>"Choose a job you love, and you will never have to work a day in your life."</strong></p>
                             </div>
@@ -97,13 +97,13 @@ export default class HomePage extends Component {
                                     <h3>2016 - 2017</h3>
                                 </div>
                                 <div className={style.body}>
-                                    <p>Self-taught HTML, CSS, JS, PHP, SQL</p>
+                                    <p>Self-taught Web development</p>
                                 </div>
                             </div>
                             <div className={style.entry}>
                                 <div className={style.title}>
                                     <h3>Summer 2018</h3>
-                                    <p>FreeLance</p>
+                                    <p>Part-time</p>
                                     <p>CGPC Solution</p>
                                 </div>
                                 <div className={style.body}>
@@ -142,7 +142,7 @@ export default class HomePage extends Component {
                                     <img src={logo_oxford} />
                                 </div>
                                 <div className={style.body}>
-                                    <p>Designing and developing full-stack applications across multiple platforms using modern industry-adopted languages and PHP frameworks</p>
+                                    <p>Designing and developing full-stack applications across multiple platforms using modern industry-adopted languages</p>
                                 </div>
                             </div>
                         </div>
@@ -152,7 +152,7 @@ export default class HomePage extends Component {
 
                     <div className={`${style.box} ${style.skills_box}`} id={style.skills} style={{zIndex: this.state.skills_opacity ? 9 : 0, opacity: this.state.skills_opacity ? 1 : 0}}>
                         <div>
-                            <h3>This page was built using React.js</h3>
+                            <h3>MY SKILLS</h3>
                             <div className={style.skill}>
                                 <h3>Front-End</h3>
                                 <p>Javascript/jQuery/React.Js/Bootstrap</p>
@@ -191,7 +191,7 @@ export default class HomePage extends Component {
                                 </div>
                             </div>
                             <div className={style.skill}>
-                                <NavLink className={`${style.btn} ${style.btn_sm}`} to="/contact">See my works</NavLink>
+                                <NavLink className={`${style.btn} ${style.btn_sm}`} to="/projects">See my works</NavLink>
                             </div>
                         </div>
                     </div>
