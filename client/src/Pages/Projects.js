@@ -11,7 +11,8 @@ export default class ProjectsPage extends Component {
             box_2: false,
             box_3: false,
             box_4: false,
-            box_5: true
+            box_5: true,
+            box_6: false
         }
     }
 
@@ -22,7 +23,9 @@ export default class ProjectsPage extends Component {
                 box_2: false,
                 box_3: false,
                 box_4: false,
-                box_5: false
+                box_5: false,
+                box_6: false
+
             });
         }else if(name === 'box_2'){
             this.setState({
@@ -30,7 +33,8 @@ export default class ProjectsPage extends Component {
                 box_2: true,
                 box_3: false,
                 box_4: false,
-                box_5: false
+                box_5: false,
+                box_6: false
             });
         }else if(name === 'box_3'){
             this.setState({
@@ -38,7 +42,8 @@ export default class ProjectsPage extends Component {
                 box_2: false,
                 box_3: true,
                 box_4: false,
-                box_5: false
+                box_5: false,
+                box_6: false
             });
         }else if(name === 'box_4'){
             this.setState({
@@ -46,7 +51,8 @@ export default class ProjectsPage extends Component {
                 box_2: false,
                 box_3: false,
                 box_4: true,
-                box_5: false
+                box_5: false,
+                box_6: false
             });
         }else if(name === 'box_5'){
             this.setState({
@@ -54,7 +60,17 @@ export default class ProjectsPage extends Component {
                 box_2: false,
                 box_3: false,
                 box_4: false,
-                box_5: true
+                box_5: true,
+                box_6: false
+            });
+        }else if(name === 'box_6'){
+            this.setState({
+                box_1: false,
+                box_2: false,
+                box_3: false,
+                box_4: false,
+                box_5: false,
+                box_6: true
             });
         }
     }
@@ -74,6 +90,8 @@ export default class ProjectsPage extends Component {
                             <h1> <a className={`${style.h1_desktop} ` + (this.state.box_3 ? `${style.active}` : '' )} target="_blank" onClick={() => this.handleHoverIn('box_3')} >InfraShares</a></h1>
 
                             <h1> <a className={`${style.h1_desktop} ` + (this.state.box_4 ? `${style.active}` : '' )} target="_blank" onClick={() => this.handleHoverIn('box_4')} >GSL Banking</a></h1>
+
+                            <h1> <a className={`${style.h1_desktop} ` + (this.state.box_6 ? `${style.active}` : '' )} target="_blank" onClick={() => this.handleHoverIn('box_6')} >Brother</a></h1>
 
                             <h1> <a className={`${style.h1_desktop} ` + (this.state.box_5 ? `${style.active}` : '' )} target="_blank" onClick={() => this.handleHoverIn('box_5')} >Bamboocopter</a></h1>
                            
@@ -162,6 +180,52 @@ export default class ProjectsPage extends Component {
                                 </div>
                                 <div className={`${style.item} ${style.view_site}`}>
                                     <a href="https://bamboocopter.net" target="_blank">Demo</a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div className={`${style.box} ${style.box_6}`} style={{opacity: this.state.box_6 ? 1 : 0, zIndex: this.state.box_6 ? 99 : 1}}>
+                             <div className={style.techs}>
+                                <div className={style.item}>
+                                    html/css
+                                </div>
+                                <div className={style.item}>
+                                    Javascript
+                                </div>
+                                <div className={style.item}>
+                                    jQuery
+                                </div>
+                                <div className={style.item}>
+                                    PHP
+                                </div>
+                                <div className={style.item}>
+                                    MySQL
+                                </div>
+                                <div className={`${style.item} ${style.view_site}`}>
+                                    <a href="https://brothersolutions.com/" target="_blank">Demo</a>
+                                </div>
+                            </div>
+                        </div>
+
+                         <div className={`${style.box} ${style.box_4}`} style={{opacity: this.state.box_4 ? 1 : 0, zIndex: this.state.box_4 ? 99 : 1}}>
+                             <div className={style.techs}>
+                                <div className={style.item}>
+                                    html/css
+                                </div>
+                                <div className={style.item}>
+                                    Javascript
+                                </div>
+                                <div className={style.item}>
+                                    jQuery
+                                </div>
+                                <div className={style.item}>
+                                    PHP
+                                </div>
+                                <div className={style.item}>
+                                    MySQL
+                                </div>
+                                <div className={`${style.item} ${style.view_site}`}>
+                                    <a href="https://gslsavingsbank.com/" target="_blank">Demo</a>
                                 </div>
                             </div>
                         </div>

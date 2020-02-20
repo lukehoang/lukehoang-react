@@ -56,3 +56,15 @@ Content-Type: application/json
 {
     "name": "mung"
 }
+
+
+
+###
+
+POST http://localhost:5000/users/register
+Content-TYPE: application/json
+
+{
+    "username": "luke",
+    "password": "123"
+}

@@ -48,6 +48,9 @@ const layoutsRouter = require('./routes/layouts');
 app.use('/layouts', layoutsRouter);
 app.use('/layouts/create', layoutsRouter);
 
+const userRouter = require('./routes/users');
+app.use('/users', userRouter);
+
 //Send email API
 
 const auth = {

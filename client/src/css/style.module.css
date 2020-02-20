@@ -274,7 +274,7 @@ Main
     display: none;
 }
 .main .header_nav h1 {
-    font-size: 4em;
+    font-size: 3em;
 }
 .main .header_nav a{
     color: #BAC0CF;
@@ -558,6 +558,12 @@ Main
 .main .box_5 {
     opacity: 1;
     background-image: url(../img/bamboocopter.png);
+    background-size: cover;
+    background-position: center;
+}
+.main .box_6 {
+    opacity: 0;
+    background-image: url(../img/brother.jpg);
     background-size: cover;
     background-position: center;
 }
@@ -996,6 +1002,24 @@ Responsive CSS
         font-size: .8rem;
     }
 
+    .main .techs {
+        left: auto;
+        right: 0;
+        height: auto;
+    }
+    .main .techs .item {
+        padding: 1px;
+        margin: 3px 0 3px 3px;
+        background: #fff;
+        box-shadow: 3px 3px 10px #000;
+    }
+    .main .techs .item.item.view_site {
+        background: #6fd1cc;
+    }
+    .main .techs .item.item.view_site a{
+        color: #fff;
+    }
+
 
     /* Contact */
 
@@ -1098,7 +1122,8 @@ Responsive CSS
     .portfolio .box_2,
     .portfolio .box_3,
     .portfolio .box_4,
-    .portfolio .box_5 {
+    .portfolio .box_5,
+    .portfolio .box_6 {
         opacity: 1 !important;
     }
 
