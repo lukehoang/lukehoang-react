@@ -57,7 +57,7 @@ router.post('/register', [
 
       jwt.sign(
         payload,
-        'randomString',{
+        'secret',{
           expiresIn: 10000
         },
         (err, token) => {
@@ -134,34 +134,34 @@ router.post('/login', [
     }
 });
 
-
-
-//authenticate user
-router.post('/authenticate', /*withAuth,*/ function(req, res) {
-  console.log(req.body.username);
-  res.send('The password is potato');
+//Session User
+router.get('/pass', auth, async (req, res) => {
+  try{
+    // request.user is getting fetched from Middleware after token authentication
+    const user = await User.findById(req.user.id);
+    res.status(200).json(user);
+  }catch(err){
+    console.log(err);
+    res.status(500).send("Error in fetching user");
+  }
 });
 
-router.get('/checkToken', withAuth, function(req, res) {
-  res.sendStatus(200);
-});
-
-//middleware
-
-function withAuth(req, res, next) {
-  console.log('inside withAuth');
-  const token = req.cookies.token;
-  if (!token) {
-    res.status(401).send('Unauthorized: No token provided');
-  } else {
-    jwt.verify(token, secret, function(err, decoded) {
-      if (err) {
-        res.status(401).send('Unauthorized: Invalid token');
-      } else {
-        req.username = decoded.username;
-        next();
-      }
+function auth(req, res, next){
+  const token =  req.header('token');
+  
+  if(!token){
+    return res.status(401).json({
+      message: "Auth Error"
     });
+  }
+
+  try {
+    const decoded = jwt.verify(token, 'secret');
+    req.user = decoded.user;
+    next();
+  } catch (err) {
+    console.log(err);
+    res.status(500).send("invalid token");
   }
 }
 
