@@ -5,11 +5,13 @@ const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const nodemailer = require('nodemailer');
 const cors = require('cors');
+const cookieParser = require('cookie-parser');
+
 const port = process.env.PORT || 5000;
 
 app.use(cors());
 app.use(express.static('public'));
-
+app.use(cookieParser());
 //Serves all the request which includes /images in the url from Images folder
 app.use('/public/images/upload', express.static(__dirname + '/public/images/upload'));
 
@@ -104,6 +106,8 @@ app.post('/send', (req, res) => {
         }
     })
 });
+
+
 
 
 app.listen(port, () => console.log('server is running on port '+port));
