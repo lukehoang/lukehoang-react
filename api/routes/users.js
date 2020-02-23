@@ -6,7 +6,6 @@ const bcrypt = require('bcrypt');
 // const mongoose = require('mongoose');
 const User = require('../models/user');
 
-const secret = "mysecretsshhh";
 
 //Create user
 router.post('/register',  async (req, res) => {
@@ -36,7 +35,7 @@ router.post('/register',  async (req, res) => {
 
       jwt.sign(
         payload,
-        'secret',{
+        process.env.SECRET_STRING,{
           expiresIn: 10000
         },
         (err, token) => {
@@ -97,7 +96,7 @@ router.post('/login'
 
       jwt.sign(
         payload,
-        "secret",
+        process.env.SECRET_STRING,
         {
           expiresIn: 3600
         },

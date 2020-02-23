@@ -46,21 +46,17 @@ const photosRouter = require('./routes/photos');
 app.use('/photos', photosRouter);
 app.use('/photos/upload-photos', photosRouter);
 
-const layoutsRouter = require('./routes/layouts');
-app.use('/layouts', layoutsRouter);
-app.use('/layouts/create', layoutsRouter);
-
 const userRouter = require('./routes/users');
 app.use('/users', userRouter);
+app.use('/users/login', userRouter);
 
 //Send email API
-
 const auth = {
-    type: "oauth2",
-    user: 'mungleephoto@gmail.com',
-    clientId: "849717276396-hlhdlrq6ds49vj7l9u78jtma8qi8jsfq.apps.googleusercontent.com",
-    clientSecret: "fIvDPBi9zNt0_Xcfxz_UPYqZ",
-    refreshToken: "1//043K_oOSHqTvqCgYIARAAGAQSNwF-L9IrYDBF_CtjeGFzJ79lU78CAfJmcx4b_BLo1wJkD0P1DPeNXriMV2n4r5wIrMNott1T5Oc"
+    type: process.env.EMAIL_AUTH_TYPE,
+    user: process.env.EMAIL_AUTH_USER,
+    clientId: process.env.EMAIL_CLIENT_ID,
+    clientSecret: process.env.EMAIL_CLIENT_SECRET,
+    refreshToken: process.env.EMAIL_CLIENT_REFRESH_TOKEN
 }
 
 
