@@ -9,43 +9,22 @@ const User = require('../models/user');
 const secret = "mysecretsshhh";
 
 //Create user
-router.post('/register', [
-    check("username", "Please Enter a Valid Username")
-    .not()
-    .isEmpty(),
-    check("password", "Please enter a valid password").isLength({
-        min: 6
-    })
-  ], async (req, res) => {
+router.post('/register',  async (req, res) => {
 
-    const errors = validationResult(req);
-    if(!errors.isEmpty()){
-      return res.status(400).json({
-        errors: errors.array()
-      });
-    }
 
-    const {
-      username,
-      password
-    } = req.body;
+    const username = req.body.username;
+    const password = req.body.password;
 
     try {
 
-      let user = await User.findOne({
-        username
-      });
-      if(user){
-        return res.status(400).send('Username already taken.');
-      }
-
-      user = new User({
-        username,
-        password
-      });
-
       const salt = await bcrypt.genSalt(10);
-      user.password = await bcrypt.hash(password, salt);
+      const newPassword = await bcrypt.hash(password, salt);
+
+      const user = new User({
+        username : username,
+        password : newPassword
+      });
+
 
       await user.save();
 
@@ -77,11 +56,13 @@ router.post('/register', [
 
 
 //authenticate
-router.post('/login', [
-    check("password", "Please enter a valid password").isLength({
-      min: 6
-    })
-  ], async (req, res) => {
+router.post('/login' 
+  // ,[
+  //   check("password", "Please enter a valid password").isLength({
+  //     min: 6
+  //   })
+  // ]
+  , async (req, res) => {
 
     const errors = validationResult(req);
 
@@ -123,7 +104,7 @@ router.post('/login', [
         (err, token) => {
           if(err) throw err;
           res.status(200).json({
-            token
+            token: token
           });
         }
       );

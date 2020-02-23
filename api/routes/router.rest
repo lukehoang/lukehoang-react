@@ -66,5 +66,5 @@ Content-TYPE: application/json
 
 {
     "username": "luke",
-    "password": "123"
+    "password": "bamboo!234"
 }
