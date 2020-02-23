@@ -114,17 +114,6 @@ router.post('/login'
     }
 });
 
-//Session User
-router.get('/pass', auth, async (req, res) => {
-  try{
-    // request.user is getting fetched from Middleware after token authentication
-    const user = await User.findById(req.user.id);
-    res.status(200).json(user);
-  }catch(err){
-    console.log(err);
-    res.status(500).send("Error in fetching user");
-  }
-});
 
 function auth(req, res, next){
   const token =  req.header('token');

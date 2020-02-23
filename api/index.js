@@ -46,11 +46,15 @@ const photosRouter = require('./routes/photos');
 app.use('/photos', photosRouter);
 app.use('/photos/upload-photos', photosRouter);
 
+const layoutsRouter = require('./routes/layouts');
+app.use('/layouts', layoutsRouter);
+app.use('/layouts/create', layoutsRouter);
+
 const userRouter = require('./routes/users');
 app.use('/users', userRouter);
-app.use('/users/login', userRouter);
 
 //Send email API
+
 const auth = {
     type: process.env.EMAIL_AUTH_TYPE,
     user: process.env.EMAIL_AUTH_USER,
